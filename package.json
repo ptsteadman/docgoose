@@ -11,6 +11,7 @@
     "less-middleware": "*",
     "mongodb": "*",
     "async": "*",
-    "aws-sdk": "*"
+    "aws-sdk": "*",
+    "geoip-lite":"*"
   }
 }

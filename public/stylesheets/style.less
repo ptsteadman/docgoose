@@ -1,8 +1,12 @@
+@docgoose-red:					rgb(153, 23, 60);
+@darker-gray:						darken(#eee, 20%);
+
 h1 {
-	color: rgb(153, 23, 60);
+	color: @docgoose-red;
 	font-size: 34px !important;
 	/*margin-top: 28px !important;*/
 	margin-top: 0px !important;
+	text-shadow: 1px 1px 2px @darker-gray; 
 }
 
 #search-form{
@@ -23,10 +27,11 @@ h1 {
 
 .dropdown-menu{
 	min-width: 140px !important;
+	margin-left: -30px;
 }
 
 #geese {
-	    display: block;
+	  display: block;
 	  margin-top: 75px;
 	  margin-bottom: 25px;
     margin-left: auto;
@@ -35,5 +40,5 @@ h1 {
 }
 
 .black{
-	color: mix(rgb(46, 38, 51), rgb(153, 23, 60),50%) ;
+	color: mix(rgb(46, 38, 51), rgb(153, 23, 60),50%);
 }
