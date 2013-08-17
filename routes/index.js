@@ -3,8 +3,9 @@ var geoip = require('geoip-lite');
 
 exports.index = function(req, res){
 	//get IP address and send to correct school
-	console.log(req.connection.remoteAddress);
-	var location = geoip.lookup(req.connection.remoteAddress);
+	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+	console.log(ip);
+	var location = geoip.lookup(ip);
 	console.log(location);	
   res.redirect('/cornell');
 };
