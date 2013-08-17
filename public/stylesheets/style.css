@@ -1,0 +1,31 @@
+h1 {
+  color: #99173c;
+  font-size: 34px !important;
+  /*margin-top: 28px !important;*/
+
+  margin-top: 0px !important;
+}
+#search-form {
+  /*margin-top: 29px;	*/
+
+}
+.btn-default .caret {
+  border-top-color: white !important;
+}
+#spacer {
+  height: 25px;
+}
+.dropdown-menu {
+  min-width: 140px !important;
+}
+#geese {
+  display: block;
+  margin-top: 75px;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: .8;
+}
+.black {
+  color: #641f38;
+}
