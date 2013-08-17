@@ -1,3 +1,4 @@
+@import url("http://fonts.googleapis.com/css?family=PT+Sans");
 /*!
  * Bootstrap v3.0.0
  *
@@ -384,7 +385,7 @@ h6,
 .h5,
 .h6 {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
-  font-weight: 650;
+  font-weight: 500;
   line-height: 1.1;
 }
 h1 small,
