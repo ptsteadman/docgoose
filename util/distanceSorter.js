@@ -1,4 +1,5 @@
 module.exports = {
+
     sortSchoolsByDistanceFrom: function(schools, latitude, longitude) {
         console.log("sorting schools");
 
