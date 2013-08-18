@@ -11,7 +11,7 @@ exports.index = function (req, res) {
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log(ip);
     var location = geoip.lookup(ip);
-	if (!location) {
+	if (location) {
 	    //distanceSorter.sortSchoolsByDistanceFrom(schools,46,-74); //test...should return McGill
 		distanceSorter.sortSchoolsByDistanceFrom(schools,location.ll[0],location.ll[1]);
 		console.log(location);	
