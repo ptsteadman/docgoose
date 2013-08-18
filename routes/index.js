@@ -4,7 +4,169 @@ var AWS = require('aws-sdk');
 var format = require('util').format;
 var fs = require('fs');
 var distanceSorter = require('../util/distanceSorter');
-var schools = [{"name":"cornell","latitude":42.4479,"longitude":-76.4779},{"name":"mcgill","latitude":45.5085,"longitude":-73.5797},{"name":"berkeley","latitude":37.8717,"longitude":-122.2610},{"name":"georgia tech","latitude": 33.7756,"longitude":-84.3963},{"name":"harvard","latitude":42.3762,"longitude":-71.1158},{"name":"illinois","latitude":40.0401,"longitude":-88.2707},{"name":"michigan","latitude":42.3184,"longitude":-83.2300},{"name":"mit","latitude":42.3584,"longitude":-71.0912},{"name":"nyu","latitude":40.7296,"longitude":-73.9952},{"name":"ohio state","latitude":40.7976,"longitude":-82.5818},{"name":"penn state","latitude":40.7982,"longitude":-77.8599},{"name":"purdue","latitude":40.4246,"longitude":-86.9107},{"name":"rutgers","latitude":40.5010,"longitude":-74.4473},{"name":"stanford","latitude":37.4278,"longitude":-122.1697},{"name":"texas","latitude":30.2879,"longitude":-97.7278},{"name":"texas a&m","latitude":30.6090,"longitude":-96.3492},{"name":"toronto","latitude":43.6602,"longitude":-79.3943},{"name":"usc","latitude":34.0223,"longitude":-118.2851},{"name":"virgina_tech","latitude":38.8967,"longitude":-77.1894},{"name":"washington","latitude":47.6556,"longitude":-122.3091},{"name":"yale","latitude":41.3104,"longitude":-72.9290}];
+var schools = [
+    {
+        "mainColor": "#b01c2e",
+        "secondaryColor": "white",
+        "name": "cornell",
+        "latitude": 42.4479,
+        "longitude": -76.4779
+    },
+    {
+        "mainColor": "white",
+        "secondaryColor": "red",
+        "name": "mcgill",
+        "latitude": 45.5085,
+        "longitude": -73.5797
+    },
+    {
+        "mainColor": "#1C2045",
+        "secondaryColor": "E7C254",
+        "name": "berkeley",
+        "latitude": 37.8717,
+        "longitude": -122.261
+    },
+    {
+        "mainColor": "#947550",
+        "secondaryColor": "black",
+        "name": "georgia tech",
+        "latitude": 33.7756,
+        "longitude": -84.3963
+    },
+    {
+        "mainColor": "#A51C30",
+        "secondaryColor": "white",
+        "name": "harvard",
+        "latitude": 42.3762,
+        "longitude": -71.1158
+    },
+    {
+        "mainColor": "#F47F24",
+        "secondaryColor": "white",
+        "name": "illinois",
+        "latitude": 40.0401,
+        "longitude": -88.2707
+    },
+    {
+        "mainColor": "#b01c2e",
+        "secondaryColor": "white",
+        "name": "michigan",
+        "latitude": 42.3184,
+        "longitude": -83.23
+    },
+    {
+        "mainColor": "#666666",
+        "secondaryColor": "#993333",
+        "name": "mit",
+        "latitude": 42.3584,
+        "longitude": -71.0912
+    },
+    {
+        "mainColor": "#682069",
+        "secondaryColor": "white",
+        "name": "nyu",
+        "latitude": 40.7296,
+        "longitude": -73.9952
+    },
+    {
+        "mainColor": "#BB0000",
+        "secondaryColor": "666666",
+        "name": "ohio state",
+        "latitude": 40.7976,
+        "longitude": -82.5818
+    },
+    {
+        "mainColor": "#000099",
+        "secondaryColor": "white",
+        "name": "penn state",
+        "latitude": 40.7982,
+        "longitude": -77.8599
+    },
+    {
+        "mainColor": "#bf910c",
+        "secondaryColor": "black",
+        "name": "purdue",
+        "latitude": 40.4246,
+        "longitude": -86.9107
+    },
+    {
+        "mainColor": "#d21034",
+        "secondaryColor": "white",
+        "name": "rutgers",
+        "latitude": 40.501,
+        "longitude": -74.4473
+    },
+    {
+        "mainColor": "#8C1515",
+        "secondaryColor": "white",
+        "name": "stanford",
+        "latitude": 37.4278,
+        "longitude": -122.1697
+    },
+    {
+        "mainColor": "#cc5500",
+        "secondaryColor": "white",
+        "name": "texas",
+        "latitude": 30.2879,
+        "longitude": -97.7278
+    },
+    {
+        "mainColor": "#500000",
+        "secondaryColor": "white",
+        "name": "texas_a&m",
+        "latitude": 30.609,
+        "longitude": -96.3492
+    },
+    {
+        "mainColor": "#white",
+        "secondaryColor": "#00204E",
+        "name": "toronto",
+        "latitude": 43.6602,
+        "longitude": -79.3943
+    },
+    {
+        "mainColor": "#002145",
+        "secondaryColor": "UBC",
+        "name": "ubc",
+        "latitude": 49.265,
+        "longitude": -123.2526
+    },
+    {
+        "mainColor": "#990000",
+        "secondaryColor": "#FFCC00",
+        "name": "usc",
+        "latitude": 34.0223,
+        "longitude": -118.2851
+    },
+    {
+        "mainColor": "#660000",
+        "secondaryColor": "FF6600",
+        "name": "virgina_tech",
+        "latitude": 38.8967,
+        "longitude": -77.1894
+    },
+    {
+        "mainColor": "white",
+        "secondaryColor": "#39275B",
+        "name": "washington",
+        "latitude": 47.6556,
+        "longitude": -122.3091
+    },
+    {
+        "mainColor": "white",
+        "secondaryColor": "black",
+        "name": "waterloo",
+        "latitude": 43.4689,
+        "longitude": 80.5472
+    },
+    {
+        "mainColor": "#0f4d92",
+        "secondaryColor": "white",
+        "name": "yale",
+        "latitude": 41.3104,
+        "longitude": -72.929
+    }
+];
 
 exports.index = function (req, res) {
     //get IP address and send to correct school
@@ -26,6 +188,7 @@ exports.school = function (req, res) {
     console.log(school);
     res.render('index', {
         title: school
+		
     })
 }
 
