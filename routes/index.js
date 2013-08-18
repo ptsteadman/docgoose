@@ -49,6 +49,7 @@ exports.upload = function (req, res) {
     var s3 = new AWS.S3(); // Based on Glacier's example: http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/examples.html#Amazon_Glacier__Multi-part_Upload
 
     // File
+	console.dir(req.files.file);
     var fileName = req.files.file.name;
     var filePath = req.files.file.path;
     var fileKey = fileName;
@@ -65,8 +66,9 @@ exports.upload = function (req, res) {
     var multiPartParams = {
         Bucket: bucket,
         Key: fileKey,
-        ContentType: 'application/pdf'
+        ContentType: req.files.file.type
     };
+	console.log(multiPartParams.ContentType);
     var multipartMap = {
         Parts: []
     };
