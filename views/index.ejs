@@ -1,72 +1,162 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>docgoo.se</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="docgoo.se is an open source platform for students and educators to share open source homework solutions, past exams, lecture notes, and more.">
-	<meta name="author" content="Patrick Steadman & Clark Gredoña">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.css' />
-    <link rel="icon" type="image/ico" href="/images/favicon.ico">
-  </head>
-  <body>
-    <div class='container'>
-    	<div class='row'><div id='spacer' class='col-md-12'></div></div>
-    	<div class='row'>
-    		<div class='col-md-2 col-md-offset-1'>
-    			<h1>docgoo<span class='black'>.se</span></h1>
-    		</div><!-- col -->
-    		<div class='col-md-8'>
-    			<div id='search-form'>
-						<div class="input-group">
-							<input type='text' class='form-control' placeholder='Search by course code or name...'>
-					      <div class="input-group-btn">
-					        <button style='background-color: #b01c2e; color: white; border-color:rgb(170, 24, 24) ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Cornell <span style="color: white;" class="caret"></span></button>
-					        <ul class="dropdown-menu">
-							<li style="background-color: white;"><a style='color:red;' href="mcgill"><b>McGill</b></a></li>
-							<li style="background-color: #1C2045"><a style='color: #E7C254;'href="berkeley">Berkeley</a></li>
-							<li style="background-color: #947550"><a style='color: black;'href="georgia_tech">Georgia Tech</a></li>
-							<li style="background-color: #A51C30;"><a style='color: white;' href="harvard">Harvard</a></li>
-							<li style="background-color: #F47F24"><a style='color: #003C7D;'href="illinois">Illinois</a></li>
-							<li style="background-color: #00274c"><a style='color: #ffcb05;'href="michigan">Michigan</a></li>
-							<li style="background-color: #666666;"><a style='color:#993333;' href="mit"><b>MIT</b></a></li>
-							<li style="background-color: #682069"><a style='color:white;' href="nyu">NYU</a></li>
-							<li style="background-color: #BB0000"><a style='color: #666666;'href="ohio_state"><b>Ohio State</b></a></li>
-							<li style="background-color: #000099"><a style='color: white;'href="penn_state">Penn State</a></li>
-							<li style="background-color: #bf910c"><a style='color: black;'href="purdue">Purdue</a></li>
-							<li style="background-color: #d21034"><a style='color: white;'href="rutgers">Rutgers</a></li>
-							<li style="background-color: #8C1515;"><a style='color: white;' href="stanford">Stanford</a></li>
-							<li style="background-color: #CC5500"><a style='color: white;'href="texas">Texas</a></li>
-							<li style="background-color: #500000"><a style='color: white;'href="texas_a&m">Texas A&M</a></li>
-							<li style="background-color: white"><a style='color: #00204E;'href="toronto"><b>Toronto</b></a></li>
-							<li style="background-color: #002145"><a style='color: white; 'href="ubc">UBC</a></li>
-							<li style="background-color: #990000"><a style='color: #FFCC00;'href="usc">USC</a></li>							
-							<li style="background-color: #660000"><a style='color: #ff6600;'href="virginia_tech">Virgina Tech</a></li>
-							<li style="background-color: white"><a style='color: #39275B;'href="washington"><b>Washington</b></a></li>
-							<li style="background-color: white"><a style='color: black;'href="waterloo">Waterloo</a></li>
-							<li style="background-color: #b70101"><a style='color: #E7D9C1;'href="wisconsin">Wisconsin</a></li>				          
-					          <li style="background-color: #0f4d92;"><a style='color: white;' href="yale">Yale</a></li>
-					          
-					          <li class="divider"></li>
-					          <li><a href="#">Add Your School</a></li>
-					        </ul>
-					      </div><!-- /btn-group -->
-					</div><!-- /input-group -->
-    		</div>
-    		</div><!-- col -->
-    	</div><!-- row -->
-    	<div class='row'>
-    		<div class='col-md-10 col-md-offset-1'>
-    			<img id='geese' src='images/geese.png'>
-    		</div><!-- col -->
-    	</div><!-- row -->
-    </div> <!-- container -->
+    
+    <head>
+        <title>docgoo.se</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="docgoo.se is an open source platform for students and educators to share open source homework solutions, past exams, lecture notes, and more.">
+        <meta name="author" content="Patrick Steadman & Clark Gredoña">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.css' />
+        <link rel="icon" type="image/ico" href="/images/favicon.ico">
+    </head>
+    
+    <body>	<a class="renderUploadForm" rel="leanModal" name="renderUploadForm" href="#uploadForm">
+		Upload a file
+	</a>
 
-  <!-- JAVASCRIPTS -->
-  <script type='text/javascript' src='javascripts/jquery-1.10.2.min.js'></script>
-  <script type='text/javascript' src='javascripts/bootstrap.min.js'></script>
-  <script type='text/javascript' src='javascripts/underscore.js'></script>
-  <script type='text/javascript' src='javascripts/backbone-min.js'></script>
-	<!--<script type='text/javascript' src='javascripts/site.js'></script>-->
-  </body>
+        <div class='container'>
+            <div class='row'>
+                <div id='spacer' class='col-md-12'></div>
+            </div>
+            <div class='row'>
+                <div class='col-md-2 col-md-offset-1'>
+                    	<h1>docgoo<span class='black'>.se</span></h1>
+
+                </div>
+                <!-- col -->
+                <div class='col-md-8'>
+                    <div id='search-form'>
+                        <div class="input-group">
+                            <input type='text' class='form-control' placeholder='Search by course code or name...'>
+                            <div class="input-group-btn">
+                                <button style='background-color: #b01c2e; color: white; border-color:rgb(170, 24, 24) ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Cornell <span style="color: white;" class="caret"></span>
+
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li style="background-color: white;"><a style='color:red;' href="mcgill"><b>McGill</b></a>
+
+                                    </li>
+                                    <li style="background-color: #1C2045"><a style='color: #E7C254;' href="berkeley">Berkeley</a>
+
+                                    </li>
+                                    <li style="background-color: #947550"><a style='color: black;' href="georgia_tech">Georgia Tech</a>
+
+                                    </li>
+                                    <li style="background-color: #A51C30;"><a style='color: white;' href="harvard">Harvard</a>
+
+                                    </li>
+                                    <li style="background-color: #F47F24"><a style='color: #003C7D;' href="illinois">Illinois</a>
+
+                                    </li>
+                                    <li style="background-color: #00274c"><a style='color: #ffcb05;' href="michigan">Michigan</a>
+
+                                    </li>
+                                    <li style="background-color: #666666;"><a style='color:#993333;' href="mit"><b>MIT</b></a>
+
+                                    </li>
+                                    <li style="background-color: #682069"><a style='color:white;' href="nyu">NYU</a>
+
+                                    </li>
+                                    <li style="background-color: #BB0000"><a style='color: #666666;' href="ohio_state"><b>Ohio State</b></a>
+
+                                    </li>
+                                    <li style="background-color: #000099"><a style='color: white;' href="penn_state">Penn State</a>
+
+                                    </li>
+                                    <li style="background-color: #bf910c"><a style='color: black;' href="purdue">Purdue</a>
+
+                                    </li>
+                                    <li style="background-color: #d21034"><a style='color: white;' href="rutgers">Rutgers</a>
+
+                                    </li>
+                                    <li style="background-color: #8C1515;"><a style='color: white;' href="stanford">Stanford</a>
+
+                                    </li>
+                                    <li style="background-color: #CC5500"><a style='color: white;' href="texas">Texas</a>
+
+                                    </li>
+                                    <li style="background-color: #500000"><a style='color: white;' href="texas_a&m">Texas A&M</a>
+
+                                    </li>
+                                    <li style="background-color: white"><a style='color: #00204E;' href="toronto"><b>Toronto</b></a>
+
+                                    </li>
+                                    <li style="background-color: #002145"><a style='color: white; ' href="ubc">UBC</a>
+
+                                    </li>
+                                    <li style="background-color: #990000"><a style='color: #FFCC00;' href="usc">USC</a>
+
+                                    </li>
+                                    <li style="background-color: #660000"><a style='color: #ff6600;' href="virginia_tech">Virgina Tech</a>
+
+                                    </li>
+                                    <li style="background-color: white"><a style='color: #39275B;' href="washington"><b>Washington</b></a>
+
+                                    </li>
+                                    <li style="background-color: white"><a style='color: black;' href="waterloo">Waterloo</a>
+
+                                    </li>
+                                    <li style="background-color: #b70101"><a style='color: #E7D9C1;' href="wisconsin">Wisconsin</a>
+
+                                    </li>
+                                    <li style="background-color: #0f4d92;"><a style='color: white;' href="yale">Yale</a>
+
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Add Your School</a>
+
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /btn-group -->
+                        </div>
+                        <!-- /input-group -->
+                    </div>
+                </div>
+                <!-- col -->
+            </div>
+            <!-- row -->
+            <div class='row'>
+                <div class='col-md-10 col-md-offset-1'>
+                    <img id='geese' src='images/geese.png'>
+                </div>
+                <!-- col -->
+            </div>
+            <!-- row -->
+        </div>
+        <!-- container -->
+        <div id="uploadForm">
+		<div id="signup-ct">
+			<a class="modal_close" href="#"></a>
+            <form method="post" enctype="multipart/form-data" action="/api/upload/">
+                 <div class="txt-fld">
+				    <label for="">File name</label>
+                    <input type="text" name="title" />
+                </div>
+                <div class = "file-fld">
+                    <input type="file" name="file" />
+                </div>
+                <div class="btn-fld">
+                    <input type="submit" value="Upload" />
+                </div>
+            </form>
+			</div>
+        </div>
+        <!-- JAVASCRIPTS -->
+        <script type='text/javascript' src='javascripts/jquery-1.10.2.min.js'></script>
+        <script type='text/javascript' src='javascripts/jquery.leanModal.min.js'></script>
+        <script type='text/javascript' src='javascripts/bootstrap.min.js'></script>
+        <script type='text/javascript' src='javascripts/underscore.js'></script>
+        <script type='text/javascript' src='javascripts/backbone-min.js'></script>
+        <script type="text/javascript">
+            $(function() {
+                $('a[rel*=leanModal]').leanModal({
+                    closeButton: ".modal_close"
+                });
+            });
+        </script>
+        <!--<script type='text/javascript' src='javascripts/site.js'></script>-->
+    </body>
+
 </html>
