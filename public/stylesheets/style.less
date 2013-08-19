@@ -55,6 +55,20 @@
     -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
     -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
 }
+
+#invalidUpload {
+    width: 364px;
+    padding-bottom: 2px;
+    display:none;
+    background: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.7);
+}
+
 #uploadForm .txt-fld {
     position: relative;
     width: 364px;
@@ -99,6 +113,11 @@
     background: #FDE0E0;
 }
 
+#file_support {
+	font-size: 10px;
+	display: none
+}
+
 #uploadForm .file-fld {
 	width: 364px;padding-left: 17px;
 padding-top: 8px;
@@ -106,9 +125,10 @@ padding-bottom: 8px;
 border-bottom: 1px solid #EEE;
 }
 
-input[type="file"] {
-
+ul {
+	list-style-type: none;
 }
+
 button {
     float: right;
     font-family:"Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -135,3 +155,13 @@ button {
     background: url(../img/modal_close.png);
     z-index: 2;
 }
+input.parsley-success, textarea.parsley-success {
+        color: #468847 !important;
+        background-color: #DFF0D8 !important;
+        border: 1px solid #D6E9C6 !important;
+      }
+      input.parsley-error, textarea.parsley-error {
+        color: #B94A48 !important;
+        background-color: #F2DEDE !important;
+        border: 1px solid #EED3D7 !important;
+      }

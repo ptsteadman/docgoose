@@ -7,6 +7,7 @@ var numPartsLeft;
 var bucket;
 var fileKey;
 var starTime;
+var acceptedFileTypes = require('../JSON/acceptedFileTypes');
 
 module.exports = {
     uploadFile: function (req) {
@@ -27,11 +28,24 @@ module.exports = {
         var partSize = 1024 * 1024 * 5; // Minimum 5MB per chunk (except the last part) http://docs.aws.amazon.com/AmazonS3/latest/API/mpUploadComplete.html
         numPartsLeft = Math.ceil(buffer.length / partSize);
         var maxUploadTries = 3;
+		var fileType = req.files.file.type;
         var multiPartParams = {
             Bucket: bucket,
             Key: fileKey,
-            ContentType: req.files.file.type
+            ContentType: fileType
         };
+		
+		
+		var isAcceptedFileType = false;
+		var typesLength = acceptedFileTypes.length;
+		for (var i = 0; i < typesLength; i++) {
+			console.dir(acceptedFileTypes[i]);
+			if (fileType == acceptedFileTypes[i].mimeType) {
+				isAcceptedFileType = true;
+			}
+		}
+		if (!isAcceptedFileType) {return;}
+		
         console.log(multiPartParams.ContentType);
 
 

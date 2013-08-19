@@ -1,0 +1,62 @@
+[
+    {
+        "mimeType": "text/plain",
+        "extension": ".txt"
+    },
+    {
+        "mimeType": "application/pdf",
+        "extension": ".pdf"
+    },
+    {
+        "mimeType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "extension": ".docx"
+    },
+    {
+        "mimeType": "application/vnd.ms-excel",
+        "extension": ".xls"
+    },
+    {
+        "mimeType": "application/msword",
+        "extension": ".doc"
+    },
+    {
+        "mimeType": "text/x-pascal",
+        "extension": ".p"
+    },
+    {
+        "mimeType": "text/x-fortran",
+        "extension": ".f"
+    },
+    {
+        "mimeType": "text/x-asm",
+        "extension": ".s"
+    },
+    {
+        "mimeType": "application/x-tex",
+        "extension": ".tex"
+    },
+    {
+        "mimeType": "text/x-java-source",
+        "extension": ".java"
+    },
+    {
+        "mimeType": "text/x-c",
+        "extension": ".c"
+    },
+    {
+        "mimeType": "application/vnd.lotus-notes",
+        "extension": ".nsf"
+    },
+    {
+        "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "extension": ".pptx"
+    },
+    {
+        "mimeType": "application/vnd.sun.xml.impress",
+        "extension": ".sxi"
+    },
+    {
+        "mimeType": "application/vnd.sun.xml.calc",
+        "extension": ".sxc"
+    }
+]

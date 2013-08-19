@@ -127,34 +127,67 @@
         </div>
         <!-- container -->
         <div id="uploadForm">
-		<div id="signup-ct">
+		
 			<a class="modal_close" href="#"></a>
-            <form method="post" enctype="multipart/form-data" action="/api/upload/">
+            <form id="actualUploadForm" method="post" enctype="multipart/form-data" action="/api/upload/" data-validate="parsley" onSubmit="return checkFile()">
                  <div class="txt-fld">
 				    <label for="">File name</label>
-                    <input type="text" name="title" />
+                    <input type="text" name="title" data-required="true"/>
                 </div>
                 <div class = "file-fld">
-                    <input type="file" name="file" />
+                    <input id = "fileField" type="file" name="file" data-required="true"/>
+					<p id='file_support'>Supported file types: .txt, .pdf, .doc, .docx, .xls, .p, .f, .s, .tex, .java, .c, .nsf, .pptx, .sxi, .sxc</p>
                 </div>
+				
                 <div class="btn-fld">
                     <input type="submit" value="Upload" />
                 </div>
             </form>
-			</div>
+			
         </div>
+		
+		
         <!-- JAVASCRIPTS -->
         <script type='text/javascript' src='javascripts/jquery-1.10.2.min.js'></script>
         <script type='text/javascript' src='javascripts/jquery.leanModal.min.js'></script>
         <script type='text/javascript' src='javascripts/bootstrap.min.js'></script>
         <script type='text/javascript' src='javascripts/underscore.js'></script>
         <script type='text/javascript' src='javascripts/backbone-min.js'></script>
+		<script type="text/javascript" src="javascripts/parsley.js"></script>
+
         <script type="text/javascript">
+			
+			
+			var regex = /(\.txt|\.pdf|\.doc|\.docx|\.tex|\.java|\.c|\.s|\.tex|\.xls|\.p|\.f|\.nsf|\.pptx|\.sxi|\.sxc)$/i;
+		
             $(function() {
                 $('a[rel*=leanModal]').leanModal({
                     closeButton: ".modal_close"
                 });
             });
+			
+			function checkFile() {
+				console.dir(acceptedFileTypes);
+				var fup = document.getElementById('fileField');
+				var fileName = fup.value;
+				if(!regex.test(fileName)) {
+					$('#fileField').css('background-color', '#FDE0E0');	
+					$('#file_support').show();
+					return false;					
+				}
+				return true;
+			}
+			
+		$("#fileField").change(function(){
+			var thisField = $("#fileField");
+			if(!regex.test(this.value)) {
+					thisField.css('background-color', '#FDE0E0');	
+					$('#file_support').show();								
+			}
+			else {
+					thisField.css('background-color', 'white');												
+			}
+		});
         </script>
         <!--<script type='text/javascript' src='javascripts/site.js'></script>-->
     </body>
