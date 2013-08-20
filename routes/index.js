@@ -26,10 +26,17 @@ exports.school = function (req, res) {
     var school = req.params.name;
     console.log(school);
     res.render('index', {
-        title: school
-		
+        title: school		
     })
-}
+};
+
+exports.about = function(req, res) {
+	var school = req.params.name;
+	console.log(school);
+	res.render('index', {
+		title: school
+	})
+};
 
 exports.getClassJSON = function (req, res) {
     res.render('index', {

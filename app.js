@@ -23,7 +23,9 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/about', routes.about);
 app.get('/:name', routes.school);
+app.get('/:name/about', routes.about);
 app.get('/api/school/:name', routes.getSchoolJSON);  // human readable
 app.get('/api/class/:class-id', routes.getClassJSON);  // class id
 app.get('/api/upload/', routes.uploadForm);
