@@ -33,7 +33,7 @@ exports.school = function (req, res) {
 exports.about = function(req, res) {
 	var school = req.params.name;
 	console.log(school);
-	res.render('index', {
+	res.render('about', {
 		title: school
 	})
 };
