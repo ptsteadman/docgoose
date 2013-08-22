@@ -52,7 +52,8 @@ app.get('/api/school/:name', routes.getSchoolJSON);  // human readable
 app.get('/api/class/:class-id', routes.getClassJSON);  // class id
 app.get('/api/upload/', routes.uploadForm);
 app.post('/api/upload/', routes.upload);
-secureApp.get('/api/admin', auth, routes.admin);
+app.get('/api/admin', auth, routes.admin);
+//secureApp.get('/api/admin', auth, routes.admin); //TODO: Figure out why this doesn't work
 
 var options = {
 	key: fs.readFileSync('./adminPageKey.pem'),
@@ -63,9 +64,9 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('HTTP express server listening on port ' + app.get('port'));
 });
 
-http.createServer(secureApp).listen(secureApp.get('port'), function(){
-  console.log('HTTPS express server listening on port ' + secureApp.get('port'));
-});
+// http.createServer(secureApp).listen(secureApp.get('port'), function(){
+  // console.log('HTTPS express server listening on port ' + secureApp.get('port'));
+// });
 
 
 
