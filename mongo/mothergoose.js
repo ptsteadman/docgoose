@@ -13,14 +13,12 @@ db.once('open', function(){
 // Define Schema once, for use elsewhere in the app
 
 var schoolSchema = new Schema({
-	_id: Number,
 	name: String,
 	location: String,
 	courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }]
 });
 
 var courseSchema = new Schema({
-	_id: Number,
 	title: String,
 	departmentCode: String,
 	courseNumber: String,
@@ -30,7 +28,6 @@ var courseSchema = new Schema({
 });
 
 var documentSchema = new Schema({
-	_id: Number,
 	name: String,
 	link: String,
 	_course: { type: Number, ref: 'Course' } 

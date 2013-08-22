@@ -17,6 +17,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(require('less-middleware')({ src: __dirname + '/public' }));
 app.use(express.static(path.join(__dirname, 'public')));
+var auth = express.basicAuth('docgoose', 'pclnsux');
 
 // development only
 if ('development' == app.get('env')) {
@@ -31,6 +32,7 @@ app.get('/api/school/:name', routes.getSchoolJSON);  // human readable
 app.get('/api/class/:class-id', routes.getClassJSON);  // class id
 app.get('/api/upload/', routes.uploadForm);
 app.post('/api/upload/', routes.upload);
+app.get('/api/admin', auth, routes.admin);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

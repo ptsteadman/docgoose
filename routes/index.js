@@ -54,5 +54,10 @@ exports.upload = function (req, res) {
 	awsUploader.uploadFile(req);
     //res.render('index', { title: 'upload' });
     res.send(format('\nuploaded %s (%d Kb) to %s as %s', req.files.file.name, req.files.file.size / 1024 | 0, req.files.file.path, req.body.title));
-
 };
+
+exports.admin = function (req, res) {
+    res.render('admin', {
+        title: 'Sup'
+    });
+}
