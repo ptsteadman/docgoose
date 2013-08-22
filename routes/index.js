@@ -1,16 +1,12 @@
-var motherGoose = require('./mothergoose');
 var geoip = require('geoip-lite');
-var AWS = require('aws-sdk');
-var awsUploader = require('./awsUploader');
+var awsUploader = require('../util/awsUploader');
 var format = require('util').format;
-var fs = require('fs');
 var distanceSorter = require('../util/distanceSorter');
 var schools = require('../JSON/schools.json');
 
 exports.index = function (req, res) {
     //get IP address and send to correct school
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    console.log(ip);
     var location = geoip.lookup(ip);
 	if (location) {
 	    //distanceSorter.sortSchoolsByDistanceFrom(schools,46,-74); //test...should return McGill

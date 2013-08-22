@@ -23,7 +23,7 @@
     {
         "mainColor": "#947550",
         "secondaryColor": "black",
-        "name": "georgia tech",
+        "name": "georgia_tech",
         "latitude": 33.7756,
         "longitude": -84.3963
     },
@@ -65,14 +65,14 @@
     {
         "mainColor": "#BB0000",
         "secondaryColor": "666666",
-        "name": "ohio state",
+        "name": "ohio_state",
         "latitude": 40.7976,
         "longitude": -82.5818
     },
     {
         "mainColor": "#000099",
         "secondaryColor": "white",
-        "name": "penn state",
+        "name": "penn_state",
         "latitude": 40.7982,
         "longitude": -77.8599
     },
