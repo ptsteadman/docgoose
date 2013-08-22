@@ -56,7 +56,7 @@ secureApp.get('/api/admin', auth, routes.admin);
 
 var options = {
 	key: fs.readFileSync('./adminPageKey.pem'),
-	cert: fs.readFileSync('./cert.pem');
+	cert: fs.readFileSync('./cert.pem')
 }
 
 http.createServer(app).listen(app.get('port'), function(){
