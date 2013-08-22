@@ -28,7 +28,7 @@ if ('development' == app.get('env')) {
 }
 
 // all environments for HTTPS
-secureApp.set('port', 443);
+secureApp.set('port', process.env.PORT || 443);
 secureApp.set('views', __dirname + '/views');
 secureApp.set('view engine', 'ejs');
 secureApp.use(express.favicon(path.join( __dirname, '/public/images/favicon.ico')));
