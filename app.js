@@ -1,4 +1,5 @@
 var express = require('express')
+  , db = require('./mongo/mothergoose')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path');
