@@ -5,7 +5,7 @@ var School = mongoose.model('School');
 
 exports.reset = function(callback){
 
-	var saveSchool = function(schoolJSON, callback){
+	var saveSchool =  function(schoolJSON, callback){
 		var school = new School({
 			name: schoolJSON.name,
 			_id: schoolJSON.name,

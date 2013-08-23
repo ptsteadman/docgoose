@@ -67,7 +67,6 @@ exports.resetSchools = function (req, res) {
         res.send(200);
     });
 }
-
 exports.resetCourses = function (req, res) {
 	  var schoolToGet = req.params.name;
     course.reset(schoolToGet, function(){
