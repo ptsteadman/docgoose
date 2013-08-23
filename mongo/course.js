@@ -43,7 +43,7 @@ exports.findAll = function(callback){
 }
 
 exports.findBySchoolName = function(school, callback){
-	Course.find({}, function(err, courses){
+	Course.find({name: school}, function(err, courses){
 		if(err) return console.log(err);
 		console.log('Finding all courses.');
 		callback(courses);

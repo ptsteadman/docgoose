@@ -1,18 +1,43 @@
+/* Variables */
+
 @docgoose-red: rgb(153, 23, 60);
- @darker-gray: darken(#eee, 20%);
+@darker-gray: darken(#eee, 20%);
 
- .navBarLink {
-	color: #2E2633 !important;
-	
- }
+/* Nav */
 
- #aboutContainer {
-	margin-top: 100px;
- }
- 
-.navBarLink:hover {
-	color: rgb(153, 23, 60)!important;
-	text-decoration: none !important;
+body {
+    padding-top: 60px;
+}
+
+.navbar {
+    min-height: 47px !important;
+}
+
+nav {
+    background: #fff;
+    box-shadow: 1px 1px 1px #eee;
+}
+
+nav .input-group {
+    margin-top: 5px;
+}
+
+nav a {
+    line-height: 47px;
+}
+
+a h1 {
+    color: @docgoose-red;
+    font-size: 24px !important;
+    text-shadow: 1px 1px 2px @darker-gray;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-left: 7px;
+}
+
+.dropdown-menu {
+    min-width: 140px !important;
+    margin-left: -30px;
 }
  
 .dropdown-menu li {
@@ -20,54 +45,10 @@
 	width: 135px;
 }
 
-
-
- 
-
- #navBarContainer{
-	max-width: 1500px;
- }
- 
- .navBarText {
-	font-size: 15px;	
- }
- 
- #uploadFileColumn {
-	margin-top: 11px;
- }
- 
-  #aboutColumn {
-	margin-top: 11px;
- }
- 
- 
- .input-group{
-	margin-top: 5px;
- }
-	
-  h1 {
-    color: @docgoose-red;
-    font-size: 24px !important;
-    /*margin-top: 28px !important;*/
-    margin-top: 10px !important;
-    text-shadow: 1px 1px 2px @darker-gray;
-}
-#search-form {
-    /*margin-top: 29px;	*/
-}
 .btn-default .caret {
     border-top-color: white !important;
 }
- #masthead {
-	width: 100%;
-}
-#spacer {
-    height: 25px;
-}
-.dropdown-menu {
-    min-width: 140px !important;
-    margin-left: -30px;
-}
+
 #geese {
     display: block;
     margin-top: 75px;
@@ -79,6 +60,14 @@
 .black {
     color: mix(rgb(46, 38, 51), rgb(153, 23, 60), 50%);
 }
+
+/* Search Results */
+
+
+/* Misc Body */
+
+
+/* Modals */
 
 #lean_overlay {
     position: fixed;

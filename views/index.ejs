@@ -1,73 +1,45 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        <title>docgoo.se</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="docgoo.se is an open source platform for students and educators to share open source homework solutions, past exams, lecture notes, and more.">
-        <meta name="author" content="Patrick Steadman & Clark Gredoña">
-        <link rel='stylesheet' href='/stylesheets/style.css' />
-        <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.css' />
-        <link rel="icon" type="image/ico" href="/images/favicon.ico">
+  <head>
+    <title>docgoo.se</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="docgoo.se is an open source platform for students and educators to share open source homework solutions, past exams, lecture notes, and more.">
+    <meta name="author" content="Patrick Steadman & Clark Gredoña">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.css' />
+    <link rel="icon" type="image/ico" href="/images/favicon.ico">
     </head>
-    
     <body>
-	<div class="navbar navbar-fixed-top">  
-  <div class="navbar-inner">  
-    <div class="container" id="navBarContainer">  
-		<div class='row' id='masthead'>
-				<a href="/" >
-                <div class='col-md-1 col-md-offset-2' id="logoDiv">					
-                    	<h1>docgoo<span class='black'>.se</span></h1>					
-                </div>
-				</a>
-                <!-- col -->
-                <div class='col-md-6'>
-                    <div id='search-form'>
-                        <div class="input-group">
-                            <input type='text' class='form-control' placeholder='Search by course code or name...'>
-
-
-
-                            <div class="input-group-btn">
-                              <button style='background-color: #b01c2e; color: white; border-color:rgb(170, 24, 24) ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Cornell <span style="color: white;" class="caret"></span>
-
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <% schoolList.forEach(function(school, index){ %>
-                                     <li style="background-color: <%= school.mainColor %>"><a style='color:  <%= school.secondaryColor %>;' href="/<%= school.name %>"><b><%= school.name %></b></a></li>
-                                    <% }) %>
-                                    <li><a href="#">Add Your School</a>
-
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- /btn-group -->
-                        </div>
-                        <!-- /input-group -->
-                    </div>
-                </div>
-                <!-- col -->
-				<div class='col-md-1' id='uploadFileColumn'>	
-					<a id="renderUploadForm" class="navBarLink" rel="leanModal" name="renderUploadForm" href="#uploadForm">
-						<span class="navBarText">
-							Upload a file
-						</span>
-					</a>
-				</div>
-				
-
+	<nav class="navbar navbar-fixed-top">
+    <div class='row'>
+      <div class='col-sm-2 col-sm-offset-1 col-xs-3'>  
+        <a href="#"><h1>docgoo<span class='black'>.se</span></h1></a>
+      </div>
+      <div class='col-sm-7 col-xs-7'>
+            <div class='input-group'>
+              <input type="text" class="form-control" placeholder="Search by course code or name...">
+              <div class="input-group-btn">
+                <button style='background-color: #b01c2e; color: white; border-color:rgb(170, 24, 24) ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Cornell <span style="color: white;" class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <% schoolList.forEach(function(school, index){ %>
+                     <li style="background-color: <%= school.mainColor %>"><a style='color:  <%= school.secondaryColor %>;' href="/<%= school.name %>"><b><%= school.name %></b></a></li>
+                    <% }) %>
+                    <li><a href="#">Add Your School</a></li>
+                </ul>
+              </div>
             </div>
-    </div>  
-  </div>  
-</div>   
-
-        <div class='container'>
-          <ul>
-            <% courseList.forEach(function(course, index){   %>
-              <li><%= course.departmentCode %> <%= course.courseNumber %>: <%= course.title %> </li>
-           <% }) %>
-          </ul>
+      </div>
+      <div class='col-sm-2 col-xs-2'>   
+    		<a rel="leanModal" name="renderUploadForm" href="#uploadForm">Upload</a>
+      </div>
+    </div>
+  </nav>
+  <div class='container'>
+    <ul>
+      <% courseList.forEach(function(course, index){   %>
+        <li><%= course.departmentCode %> <%= course.courseNumber %>: <%= course.title %> </li>
+     <% }) %>
+    </ul>
        <div class="container" id="aboutContainer">
 			<div class='row'>
                 <div class='col-md-12'>

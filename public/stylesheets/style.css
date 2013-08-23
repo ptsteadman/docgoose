@@ -1,56 +1,39 @@
-.navBarLink {
-  color: #2E2633 !important;
+/* Variables */
+/* Nav */
+body {
+  padding-top: 60px;
 }
-#aboutContainer {
-  margin-top: 100px;
+.navbar {
+  min-height: 47px !important;
 }
-.navBarLink:hover {
-  color: #99173c !important;
-  text-decoration: none !important;
+nav {
+  background: #fff;
+  box-shadow: 1px 1px 1px #eee;
+}
+nav .input-group {
+  margin-top: 5px;
+}
+nav a {
+  line-height: 47px;
+}
+a h1 {
+  color: #99173c;
+  font-size: 24px !important;
+  text-shadow: 1px 1px 2px #bbbbbb;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 7px;
+}
+.dropdown-menu {
+  min-width: 140px !important;
+  margin-left: -30px;
 }
 .dropdown-menu li {
   float: left;
   width: 135px;
 }
-#navBarContainer {
-  max-width: 1500px;
-}
-.navBarText {
-  font-size: 15px;
-}
-#uploadFileColumn {
-  margin-top: 11px;
-}
-#aboutColumn {
-  margin-top: 11px;
-}
-.input-group {
-  margin-top: 5px;
-}
-h1 {
-  color: #99173c;
-  font-size: 24px !important;
-  /*margin-top: 28px !important;*/
-
-  margin-top: 10px !important;
-  text-shadow: 1px 1px 2px #bbbbbb;
-}
-#search-form {
-  /*margin-top: 29px;	*/
-
-}
 .btn-default .caret {
   border-top-color: white !important;
-}
-#masthead {
-  width: 100%;
-}
-#spacer {
-  height: 25px;
-}
-.dropdown-menu {
-  min-width: 140px !important;
-  margin-left: -30px;
 }
 #geese {
   display: block;
@@ -63,6 +46,9 @@ h1 {
 .black {
   color: #641f38;
 }
+/* Search Results */
+/* Misc Body */
+/* Modals */
 #lean_overlay {
   position: fixed;
   z-index: 100;
