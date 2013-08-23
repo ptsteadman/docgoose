@@ -40,14 +40,6 @@
     </div>
   </nav>
   <div class='container'>
-    <!--
-    <ul>
-      <@ courseList.forEach(function(course, index){   @>
-        <li><@= course.departmentCode @> <@= course.courseNumber @>: <@= course.title @> </li>
-     <@ }) @>
-    </ul>
-  -->
-
     <@ include about @>
 
         <div id="uploadForm">	<a class="modal_close" href="#"></a>
@@ -67,6 +59,12 @@
                 </div>
             </form>
         </div>
+
+
+        <!-- TEMPLATES -->
+        <script id='course-template' type='text/template'>
+        </script>
+
         <!-- JAVASCRIPTS -->
         <script type='text/javascript' src='/javascripts/jquery-1.10.2.min.js'></script>
         <script type='text/javascript' src='/javascripts/jquery.leanModal.min.js'></script>
@@ -74,11 +72,14 @@
         <script type='text/javascript' src='/javascripts/underscore.js'></script>
         <script type='text/javascript' src='/javascripts/backbone-min.js'></script>
         <script type="text/javascript" src="/javascripts/parsley.js"></script>
-        <script type='text/javascript' src='javascripts/app.js'></script>
         <!-- BOOTSTRAPPING DATA -->
+        <script type='text/javascript' src='javascripts/app.js'></script>
         <script>
-          app.courseList = new app.CourseList(<@ courseList @>);
+          var data= <@- JSON.stringify(courseList) @>
+          app.courseList = new app.CourseList;
+          app.courseList.reset(data);
         </script>
+
     </body>
 
 </html>

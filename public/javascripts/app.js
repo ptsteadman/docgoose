@@ -1,14 +1,20 @@
 var app = app || {};
 
+app.Course = Backbone.Model.extend({
+	initialize: function(){
+	}	
+
+});
+
 app.CourseList = Backbone.Collection.extend({
 	model: app.Course,
 
 	initialize: function(){
-		console.log('CourseData');
+		app.courseListView = new app.CourseListView();
 	}
 });
 
-app.Course = Backbone.Model.extend({});
+
 
 app.CourseView = Backbone.View.extend({
 	
@@ -24,6 +30,7 @@ $(function(){
 	  var regex = /(\.txt|\.pdf|\.doc|\.docx|\.tex|\.java|\.c|\.s|\.tex|\.xls|\.p|\.f|\.nsf|\.pptx|\.sxi|\.sxc)$/i;
 
             $(function() {
+
                 $('a[rel*=leanModal]').leanModal({
                     closeButton: ".modal_close"
                 });
