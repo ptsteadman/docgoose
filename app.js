@@ -54,13 +54,15 @@ app.get('/api/admin', auth, routes.admin);
 
 app.post('/api/resetschools', routes.resetSchools);  // TODO: secure
 app.post('/api/resetcourses/:name', routes.resetCourses);  // TODO: secure 
-app.get('/api/admin', auth, routes.admin); //TODO: Figure out why this doesn't work
+app.get('/api/admin', auth, routes.admin); 
 
+/*
 var options = {
 	key: fs.readFileSync('./adminPageKey.pem'),
 	cert: fs.readFileSync('./cert.pem')
 }
->>>>>>> 5ce1e4526d472deb88ef1f72aa4162ce13bdaf43
+*/
+//5ce1e4526d472deb88ef1f72aa4162ce13bdaf43
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('HTTP express server listening on port ' + app.get('port'));
