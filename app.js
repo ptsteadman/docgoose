@@ -25,14 +25,14 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/about', routes.about);
 app.get('/:name', routes.school);
-app.get('/:name/about', routes.about);
 app.get('/api/school/:name', routes.getSchoolJSON);  // human readable
 app.get('/api/class/:class-id', routes.getClassJSON);  // class id
 app.get('/api/upload/', routes.uploadForm);
 app.post('/api/upload/', routes.upload);
 app.get('/api/admin', auth, routes.admin);
+app.post('/api/resetschools', routes.resetSchools);  // TODO: secure
+app.post('/api/resetcourses/:name', routes.resetCourses);  // TODO: secure 
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

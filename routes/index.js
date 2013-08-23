@@ -3,6 +3,8 @@ var awsUploader = require('../util/awsUploader');
 var format = require('util').format;
 var distanceSorter = require('../util/distanceSorter');
 var schools = require('../JSON/schools.json');
+var school = require('../mongo/school');  // school model
+var course = require('../mongo/course');  // course model
 
 exports.index = function (req, res) {
     //get IP address and send to correct school
@@ -19,20 +21,18 @@ exports.index = function (req, res) {
 };
 
 exports.school = function (req, res) {
-    var school = req.params.name;
-    console.log(school);
-    res.render('index', {
-        title: school		
-    })
-};
+  var schoolToGet = req.params.name;
+  school.findAll(function(schoolsFromMongo){
+    course.findAll(function(coursesFromMongo){
+      res.render('index', {
+        title: schoolToGet,
+        schoolList: schoolsFromMongo,
+        courseList: coursesFromMongo       
+      });
+    });
+  });
+}
 
-exports.about = function(req, res) {
-	var school = req.params.name;
-	console.log(school);
-	res.render('about', {
-		title: school
-	})
-};
 
 exports.getClassJSON = function (req, res) {
     res.render('index', {
@@ -60,4 +60,18 @@ exports.admin = function (req, res) {
     res.render('admin', {
         title: 'Sup'
     });
+}
+
+exports.resetSchools = function (req, res) {
+    school.reset(function(){
+        res.send(200);
+    });
+}
+
+exports.resetCourses = function (req, res) {
+	  var schoolToGet = req.params.name;
+    course.reset(schoolToGet, function(){
+        res.send(200);
+    })
+
 }

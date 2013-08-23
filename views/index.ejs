@@ -26,81 +26,17 @@
                     <div id='search-form'>
                         <div class="input-group">
                             <input type='text' class='form-control' placeholder='Search by course code or name...'>
+
+
+
                             <div class="input-group-btn">
                               <button style='background-color: #b01c2e; color: white; border-color:rgb(170, 24, 24) ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Cornell <span style="color: white;" class="caret"></span>
 
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li style="background-color: white;"><a style='color:red;' href="/mcgill"><b>McGill</b></a>
-
-                                    </li>
-                                    <li style="background-color: #1C2045"><a style='color: #E7C254;' href="/berkeley">Berkeley</a>
-
-                                    </li>
-                                    <li style="background-color: #947550"><a style='color: black;' href="/georgia_tech">Georgia Tech</a>
-
-                                    </li>
-                                    <li style="background-color: #A51C30;"><a style='color: white;' href="/harvard">Harvard</a>
-
-                                    </li>
-                                    <li style="background-color: #F47F24"><a style='color: #003C7D;' href="/illinois">Illinois</a>
-
-                                    </li>
-                                    <li style="background-color: #00274c"><a style='color: #ffcb05;' href="/michigan">Michigan</a>
-
-                                    </li>
-                                    <li style="background-color: #666666;"><a style='color:#993333;' href="/mit"><b>MIT</b></a>
-
-                                    </li>
-                                    <li style="background-color: #682069"><a style='color:white;' href="/nyu">NYU</a>
-
-                                    </li>
-                                    <li style="background-color: #BB0000"><a style='color: #666666;' href="/ohio_state"><b>Ohio State</b></a>
-
-                                    </li>
-                                    <li style="background-color: #000099"><a style='color: white;' href="/penn_state">Penn State</a>
-
-                                    </li>
-                                    <li style="background-color: #bf910c"><a style='color: black;' href="/purdue">Purdue</a>
-
-                                    </li>
-                                    <li style="background-color: #d21034"><a style='color: white;' href="/rutgers">Rutgers</a>
-
-                                    </li>
-                                    <li style="background-color: #8C1515;"><a style='color: white;' href="/stanford">Stanford</a>
-
-                                    </li>
-                                    <li style="background-color: #CC5500"><a style='color: white;' href="/texas">Texas</a>
-
-                                    </li>
-                                    <li style="background-color: #500000"><a style='color: white;' href="/texas_a&m">Texas A&M</a>
-
-                                    </li>
-                                    <li style="background-color: white"><a style='color: #00204E;' href="/toronto"><b>Toronto</b></a>
-
-                                    </li>
-                                    <li style="background-color: #002145"><a style='color: white; ' href="/ubc">UBC</a>
-
-                                    </li>
-                                    <li style="background-color: #990000"><a style='color: #FFCC00;' href="/usc">USC</a>
-
-                                    </li>
-                                    <li style="background-color: #660000"><a style='color: #ff6600;' href="/virginia_tech">Virgina Tech</a>
-
-                                    </li>
-                                    <li style="background-color: white"><a style='color: #39275B;' href="/washington"><b>Washington</b></a>
-
-                                    </li>
-                                    <li style="background-color: white"><a style='color: black;' href="/waterloo">Waterloo</a>
-
-                                    </li>
-                                    <li style="background-color: #b70101"><a style='color: #E7D9C1;' href="/wisconsin">Wisconsin</a>
-
-                                    </li>
-                                    <li style="background-color: #0f4d92;"><a style='color: white;' href="/yale">Yale</a>
-
-                                    </li>
-                                    
+                                    <% schoolList.forEach(function(school, index){ %>
+                                     <li style="background-color: <%= school.mainColor %>"><a style='color:  <%= school.secondaryColor %>;' href="/<%= school.name %>"><b><%= school.name %></b></a></li>
+                                    <% }) %>
                                     <li><a href="#">Add Your School</a>
 
                                     </li>
@@ -127,7 +63,11 @@
 </div>   
 
         <div class='container'>
-            
+          <ul>
+            <% courseList.forEach(function(course, index){   %>
+              <li><%= course.departmentCode %> <%= course.courseNumber %>: <%= course.title %> </li>
+           <% }) %>
+          </ul>
        <div class="container" id="aboutContainer">
 			<div class='row'>
                 <div class='col-md-12'>
