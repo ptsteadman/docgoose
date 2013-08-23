@@ -33,11 +33,7 @@ a h1 {
 }
 .dropdown-menu {
   min-width: 140px !important;
-  margin-left: -30px;
-}
-.dropdown-menu li {
-  float: left;
-  width: 135px;
+  margin-left: -60px !important;
 }
 .btn-default .caret {
   border-top-color: white !important;
@@ -146,7 +142,6 @@ a h1 {
 }
 ul {
   list-style-type: none;
-  width: 272px;
 }
 .aboutList {
   width: 85%;
