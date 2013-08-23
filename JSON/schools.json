@@ -36,14 +36,14 @@
     },
     {
         "mainColor": "#F47F24",
-        "secondaryColor": "white",
+        "secondaryColor": "#003C7D",
         "name": "illinois",
         "latitude": 40.0401,
         "longitude": -88.2707
     },
     {
-        "mainColor": "#b01c2e",
-        "secondaryColor": "white",
+        "mainColor": "#00274c",
+        "secondaryColor": "#ffcb05",
         "name": "michigan",
         "latitude": 42.3184,
         "longitude": -83.23
@@ -120,7 +120,7 @@
     },
     {
         "mainColor": "#002145",
-        "secondaryColor": "UBC",
+        "secondaryColor": "ffffff",
         "name": "ubc",
         "latitude": 49.265,
         "longitude": -123.2526
