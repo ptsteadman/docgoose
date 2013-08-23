@@ -51,10 +51,11 @@ app.get('/api/class/:class-id', routes.getClassJSON);  // class id
 app.get('/api/upload/', routes.uploadForm);
 app.post('/api/upload/', routes.upload);
 app.get('/api/admin', auth, routes.admin);
-
+<<<<<<< HEAD
 app.post('/api/resetschools', routes.resetSchools);  // TODO: secure
 app.post('/api/resetcourses/:name', routes.resetCourses);  // TODO: secure 
-app.get('/api/admin', auth, routes.admin); //TODO: Figure out why this doesn't work
+=======
+//secureApp.get('/api/admin', auth, routes.admin); //TODO: Figure out why this doesn't work
 
 var options = {
 	key: fs.readFileSync('./adminPageKey.pem'),
