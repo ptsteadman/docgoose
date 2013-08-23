@@ -21,6 +21,9 @@ body {
     margin-right: 17px;
 }
 
+a:hover {
+    text-decoration: none !important;
+}
 
 nav {
     background: #fff;
@@ -39,10 +42,23 @@ nav .input-group {
 
 a h1 {
     color: @docgoose-red;
-    font-size: 24px !important;
+    font-size: 26px !important;
     text-shadow: 1px 1px 2px @darker-gray;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-bottom: 0px;
+    transition: color 1s;
+}
+
+a h1:hover {
+    color: mix(rgb(46, 38, 51), rgb(153, 23, 60), 50%);
+    .black{
+        color: @docgoose-red;
+    }
+}
+
+.black {
+    color: mix(rgb(46, 38, 51), rgb(153, 23, 60), 50%);
+    transition: color 1s;
 }
 
 .dropdown-menu {
@@ -65,9 +81,7 @@ a h1 {
     margin-right: auto;
     opacity: .8;
 }
-.black {
-    color: mix(rgb(46, 38, 51), rgb(153, 23, 60), 50%);
-}
+
 
 /* Search Results */
 
@@ -213,3 +227,43 @@ input.parsley-success, textarea.parsley-success {
         background-color: #F2DEDE !important;
         border: 1px solid #EED3D7 !important;
       }
+
+/* EXPERIMENTAL */
+
+// Text-shadow
+.longShadow(@color, @size, @spread: 100, @flag: 1, @tmp: '') when (@size > 0) {
+  @percent: round(@flag / @size * 100) * @spread;
+  @shadowColor: fade(@color, @percent);
+  @shadow: ~"@{size}px @{size}px 1px @{shadowColor}";
+  @ends: ~"@{shadow}, @{tmp}";
+  @shadowString: ~"@{ends} 0px 0px 1px #000";
+
+  .longShadowLoop(@string, @index) when (@index < 1) {
+    text-shadow: @string;
+  }
+
+  .longShadowLoop(@shadowString, @size - 1);
+  .longShadow(@color, @size - 1, @spread, @flag + 1, @ends);
+}
+
+// Box-shadow
+.longShadowBox(@color, @size, @spread: 1, @flag: 1, @tmp: '') when (@size > 0) {
+  @percent: round(@flag / @size * 100) * @spread;
+  @shadowColor: fade(@color, @percent);
+  @shadow: ~"@{size}px @{size}px 0 0 @{shadowColor}";
+  @ends: ~"@{shadow}, @{tmp}";
+  @shadowString: ~"@{ends} 0px 0px 0 0 #000";
+
+  .longShadowLoop(@string, @index) when (@index < 1) {
+    -webkit-box-shadow: @string;
+       -moz-box-shadow: @string;
+            box-shadow: @string;
+  }
+
+  .longShadowLoop(@shadowString, @size - 1);
+  .longShadowBox(@color, @size - 1, @spread, @flag + 1, @ends);
+}
+
+.shadow{
+    .longShadow(#eee, 4, 3);
+}
