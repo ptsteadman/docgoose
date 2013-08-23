@@ -1,0 +1,268 @@
+[33mcommit 071ded0eaffa1a1eb7263f65074adfd062b4b96b[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 14:44:47 2013 -0400
+
+    Beginning Backboneification
+
+[33mcommit 9002038b4dfc7343f8e24c73e504cb56f4acc683[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 04:26:44 2013 -0400
+
+    Small changes to nav styling
+
+[33mcommit 71e5e235c3c70e4963430eb630804ef6a685b746[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 03:53:00 2013 -0400
+
+    Messed around with dropdown list
+
+[33mcommit bedf0853e2a39f21b211dc1928cfc3186ed8f21c[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 03:38:05 2013 -0400
+
+    Moved upload to bottom on phone view
+
+[33mcommit 2b4260c8c969b2f8f2eac1117511dd758adc021b[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 03:25:31 2013 -0400
+
+    Final iteration on responsive
+
+[33mcommit 05b2aeba699f2f7b2e9b87f42d8d30a38c7b9d9f[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 03:15:43 2013 -0400
+
+    More responsive fixes
+
+[33mcommit ad288dc158338dbe0c98fd7faa6e50f710d264cf[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 03:03:29 2013 -0400
+
+    Good responsive design.
+
+[33mcommit ccc3db12acf97ee7a9b29fce0f7ec3deda0f9ba0[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 01:28:57 2013 -0400
+
+    Commented out HTTPS
+
+[33mcommit 7a77c60e46765bcb8ecf0f28fb70d341df33b276[m
+Merge: 4cf0db5 5ce1e45
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 01:24:26 2013 -0400
+
+    Merging
+
+[33mcommit 4cf0db58eac1869f4cc5b15640cdf674ad637d43[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Fri Aug 23 01:01:54 2013 -0400
+
+    Rendering course lists server side
+
+[33mcommit 5ce1e4526d472deb88ef1f72aa4162ce13bdaf43[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 03:22:24 2013 -0400
+
+    Added Georgia Tech and MIT course
+
+[33mcommit 4e238875f16371cd3e5898255f7a6d25e5ec3de4[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 02:53:12 2013 -0400
+
+    Revert back to no HTTPS for now
+
+[33mcommit 2e3e465f143d4880910049f66b3154c78103ad74[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 02:38:47 2013 -0400
+
+    Trying a different port
+
+[33mcommit 114d00ca3d745104ba787c42589526a2b68eb7e4[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 02:35:35 2013 -0400
+
+    oops
+
+[33mcommit a0c880af53ec7789a0e75f98748d48e181fb4ee2[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 02:31:57 2013 -0400
+
+    oops
+
+[33mcommit 621444391fc0f93895e7e5e54996d369777f0625[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 02:29:17 2013 -0400
+
+    Added HTTPS for admin page
+
+[33mcommit 5164e21c59cc954c93fe3fae23a3407316fb8381[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 02:12:36 2013 -0400
+
+    Added .gitignore
+
+[33mcommit 94b0353974f1699afff04a353b7df252d9e1c36c[m
+Merge: e326ace 69bb4b3
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Thu Aug 22 01:56:39 2013 -0400
+
+    Merge branch 'master' of psteadman.com:docgoose
+
+[33mcommit e326acef099b6b4481a638f659fd44054b9f2b07[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Thu Aug 22 01:55:51 2013 -0400
+
+    Added admin page
+
+[33mcommit 69bb4b371a50adc127bffcf037636920633ec338[m
+Merge: 3537a49 6e1aa88
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 00:27:50 2013 -0400
+
+    Merge branch 'master' of 54.213.43.63:docgoose
+
+[33mcommit 3537a492a12c6a2c9cc5f477ca713e341a33c79c[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 00:24:03 2013 -0400
+
+    Removed separate 'About' page
+
+[33mcommit 6e1aa88da163a006a3b0838aff80997ece13d04f[m
+Author: Patrick Steadman <ptsteadman@gmail.com>
+Date:   Thu Aug 22 00:16:46 2013 -0400
+
+    Refactoring database connection/schema.
+
+[33mcommit d879855cf4acc82594c166b7e8454a3c3e124a04[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Thu Aug 22 00:01:47 2013 -0400
+
+    Added 'Facebook' and 'Email' to 'Contact Us'
+
+[33mcommit 3f4b0dc3b809784621d0814bd7276abb99bca9e1[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Wed Aug 21 23:24:16 2013 -0400
+
+    Added Purdue courses
+
+[33mcommit d0292900b8dbfd2e0e6452b796a6715cd89a8600[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Wed Aug 21 02:53:55 2013 -0400
+
+    Added Berkeley courses
+
+[33mcommit 0a90dff5d2a7f7cf7887d584f4d3c34a9c6d86fa[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Tue Aug 20 23:41:42 2013 -0400
+
+    Added Michigan courses
+
+[33mcommit c2cb7046edd80a8f7f710d8708f0153a3133c2ed[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Tue Aug 20 03:10:19 2013 -0400
+
+    Crawled mcgill's course catalog and added resulting JSON...about 2k missing due to McGill's server being overloaded
+
+[33mcommit 77fc525aee2098800263bb35b3e7299b712937f3[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Mon Aug 19 23:29:13 2013 -0400
+
+    Added 'contact us'
+
+[33mcommit f968e3cdbaf9774640ca65af2874c5d3f4893cdf[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Mon Aug 19 23:21:17 2013 -0400
+
+    Fleshed out about page
+
+[33mcommit 37a1e2072d34b4f9ccf47273eb34be6888790e3f[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Mon Aug 19 22:34:29 2013 -0400
+
+    Made the search bar a little bit longer and offset navbar elements to the left to center it
+
+[33mcommit a3a30a0bd0b113f7f631ee0c388544aaba4bd0e9[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Mon Aug 19 22:22:49 2013 -0400
+
+    Revamped the UI a bit and added an About link
+
+[33mcommit 815c8684add7f581bbd4cb09246e2d62e2f3463d[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Mon Aug 19 04:12:50 2013 -0400
+
+    Fix
+
+[33mcommit 2b28e121e05dddfb899b7af26fd48e618374f76f[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Mon Aug 19 04:09:55 2013 -0400
+
+    Added client-side and server-side file name and type validation
+
+[33mcommit 9a32643cc6e23392e023509178c1c1f6bcc0a771[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 23:46:30 2013 -0400
+
+    Added basic but functional upload form modal
+
+[33mcommit 250ab3b2ae9aeab8411a1b7ae832dff1a3837ed1[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 21:22:09 2013 -0400
+
+    Refactored by moving schools JSON variable to its own .json
+
+[33mcommit b2c97712a23131ba0b8f4e663b41e868410c5d60[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 19:52:19 2013 -0400
+
+    Changed file name but forgot to change corresponding require('')...
+
+[33mcommit c3f73c6a6688a88e9873e75a9ff9c48d9f30aa23[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 19:41:53 2013 -0400
+
+    Refactored uploading code, migrating from routes/index.js to its own awsUploader.js
+
+[33mcommit 804a0e6d31070f29f9e8f901475acf5ddc47a085[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 19:13:26 2013 -0400
+
+    Made JSONs more readable
+
+[33mcommit 4260be50c590d51a74204bddc35a5121f92a4f54[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 04:31:14 2013 -0400
+
+    Changed S3 upload to work with all types of files, not just pdf
+
+[33mcommit 74dec3ac3e003cbcdafe982c89a939f6ad74f4db[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 04:18:38 2013 -0400
+
+    .
+
+[33mcommit 815c6820a451c49855b41e7685cc27e4e02d90fb[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 04:17:34 2013 -0400
+
+    Refactored code, migrating the localization in index.js to its own file distanceSorter.js
+
+[33mcommit 99b18910025d12368052e2d84b8dc9f632e2ddc0[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sun Aug 18 03:45:19 2013 -0400
+
+    Added redirecting to appropriate based on geo-ip address! Also added some Canadian schools;
+
+[33mcommit 4978434f1c4f3a37a395eb68670b21e6a4814a64[m
+Author: Clark Gredoña <cgredona@gmail.com>
+Date:   Sat Aug 17 17:49:48 2013 -0400
+
+    Added basic S3 upload functionality
+
+[33mcommit 54b9dbad0c1a59500a0623fc86865cd50d5f79b1[m
+Author: Patrick <uhhonestly@gmail.com>
+Date:   Sat Aug 17 16:09:14 2013 -0400
+
+    Geoip fixed
+
+[33mcommit be4352d323abd92494f162de8a7a9dc2af0218
