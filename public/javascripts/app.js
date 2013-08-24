@@ -111,16 +111,24 @@ app.CourseListView = Backbone.View.extend({
 	},
 
 	searchClasses: function(event, query){
-		var split = query.split(' ');
-        split = _.map(split, function(word){
+		var stringSplit = query.split(' ');
+		var queryRegExp = new RegExp(query, "gi");
+		console.log(stringSplit)
+    var split = _.map(stringSplit, function(word){
           return new RegExp(word, "gi")
         })
         var searched = _.filter(this.collection.original, function(course){
           for(var i = 0; i < split.length; i++){
-            if(!split[i].test(course.get('title'))){
-              return false;
-            }
-          }
+          	if(queryRegExp.test(course.get('departmentCode') + ' ' + course.get('courseNumber'))) return true;
+          	if(split[i].test(course.get('departmentCode'))){
+          		for(var n = 0; n < split.length; n++){
+          			 if(!split[n].test(course.get('title')) && i != n && stringSplit[i] != "") return false;
+          	} 
+          } else {
+
+           if(!split[i].test(course.get('title')) && stringSplit[i] != '') return false;
+         }
+        }
           return true;
         });
         this.collection.reset(searched);
