@@ -41,7 +41,6 @@
   </nav>
   <div class='container'>
     <div id='main-content'>
-          <@ include about @>
     </div>
 
 
@@ -68,6 +67,9 @@
         <script id='course-template' type='text/template'>
           <h5><%= departmentCode %> <%= courseNumber %>: <%= title %></h5>
         </script>
+        <script id='home-template' type='text/template'>
+          <@ include about @>
+        </script>
 
         <!-- JAVASCRIPTS -->
         <script type='text/javascript' src='/javascripts/jquery-1.10.2.min.js'></script>
@@ -76,7 +78,8 @@
         <script type='text/javascript' src='/javascripts/underscore.js'></script>
         <script type='text/javascript' src='/javascripts/backbone-min.js'></script>
         <script type="text/javascript" src="/javascripts/parsley.js"></script>
-        <!-- BOOTSTRAPPING DATA -->
+
+        <!-- BOOTSTRAPPING DATA INTO PAGE -->
         <script type='text/javascript' src='javascripts/app.js'></script>
         <script>
           var data= <@- JSON.stringify(courseList) @>

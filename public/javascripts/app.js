@@ -1,6 +1,27 @@
 
 var app = app || {};
 
+// Utilities
+
+// Home 
+
+app.HomeView = Backbone.View.extend({
+	className: 'home',
+
+	template: _.template($('#home-template').html()),
+
+	initialize: function(){
+
+	},
+
+	render: function(){
+		this.$el.html(this.template());
+		return this.$el;
+	}
+});
+
+// Forms
+
 app.SearchForm = Backbone.View.extend({
 	el: "#search-form",
 
@@ -11,7 +32,9 @@ app.SearchForm = Backbone.View.extend({
 	searchHandler: function(event){
 		Backbone.trigger('search', event, $("#search-form input").val());
     }
-})
+});
+
+// Courses
 
 app.Course = Backbone.Model.extend({
 	initialize: function(){
@@ -20,7 +43,6 @@ app.Course = Backbone.Model.extend({
 	parse: function(data){
 		console.log('hi');
 	}	
-
 });
 
 app.CourseList = Backbone.Collection.extend({
@@ -28,14 +50,13 @@ app.CourseList = Backbone.Collection.extend({
 
 	initialize: function(){
 		this.once('reset', function(){
-			this.original = this.models
+			this.original = this.models;
+			app.homeView = new app.HomeView();
 			app.courseListView = new app.CourseListView();
 			app.searchForm = new app.SearchForm();
 		}, this);
 	}
 });
-
-
 
 app.CourseView = Backbone.View.extend({
 	className: 'course',
@@ -44,12 +65,40 @@ app.CourseView = Backbone.View.extend({
 	render: function(){
 		this.$el.html(this.template(this.model.attributes));
 		return this.$el;
-	}
-	
+	}	
 });
 
 app.CourseListView = Backbone.View.extend({
 	el: "#main-content",
+
+	initialize: function(){
+
+		this.collection = app.courseList; //bootstrapped data
+		this.render();
+		Backbone.on('search', this.searchClasses, this);
+	},
+
+	render: function(){
+		if(this.collection.models.length > 500){
+			console.log('too big')
+			this.$el.html(app.homeView.render());
+		} else {
+			this.$el.html('');
+			var self = this;
+			_.each(this.collection.models, function(course){
+				self.renderCourse(course)
+			});
+		}
+
+	},
+
+	renderCourse: function(course){
+		var courseView = new app.CourseView({
+			model: course
+		});
+
+		this.$el.append(courseView.render());
+	},
 
 	searchClasses: function(event, query){
 		var split = query.split(' ');
@@ -68,36 +117,10 @@ app.CourseListView = Backbone.View.extend({
         this.collection.reset(searched);
         this.render();
 
-	},
-
-	initialize: function(){
-		this.collection = app.courseList; //bootstrapped data
-		this.render();
-		Backbone.on('search', this.searchClasses, this);
-	},
-
-	render: function(){
-		if(this.collection.models.length > 500){
-			console.log('too big')
-			this.$el.html('<h1>Start Typing!</h1>')
-		} else {
-			this.$el.html('');
-			var self = this;
-			_.each(this.collection.models, function(course){
-				self.renderCourse(course)
-			});
-		}
-
-	},
-
-	renderCourse: function(course){
-		var courseView = new app.CourseView({
-			model: course
-		});
-
-		this.$el.append(courseView.render());
 	}
 });
+
+// Documents
 
 $(function(){
 
