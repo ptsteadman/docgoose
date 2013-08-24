@@ -3,19 +3,31 @@ var app = app || {};
 
 // Utilities
 
+app.TemplateCache = {
+    get: function(selector){
+      if (!this.templates){ this.templates = {}; }
+
+      var template = this.templates[selector];
+      if (!template){
+        var tmpl = $(selector).html();
+        template = _.template(tmpl);
+        this.templates[selector] = template;
+      }
+      return template;
+    }
+  }
+
 // Home 
 
 app.HomeView = Backbone.View.extend({
 	className: 'home',
 
-	template: _.template($('#home-template').html()),
+	template: '#home-template',
 
-	initialize: function(){
-
-	},
 
 	render: function(){
-		this.$el.html(this.template());
+		var template = app.TemplateCache.get(this.template);
+		this.$el.html(template());
 		return this.$el;
 	}
 });
@@ -60,10 +72,11 @@ app.CourseList = Backbone.Collection.extend({
 
 app.CourseView = Backbone.View.extend({
 	className: 'course',
-	template: _.template($('#course-template').html()),
+	template: '#course-template',
 
 	render: function(){
-		this.$el.html(this.template(this.model.attributes));
+		var template = app.TemplateCache.get(this.template);
+		this.$el.html(template(this.model.attributes));
 		return this.$el;
 	}	
 });
@@ -80,24 +93,21 @@ app.CourseListView = Backbone.View.extend({
 
 	render: function(){
 		if(this.collection.models.length > 500){
-			console.log('too big')
 			this.$el.html(app.homeView.render());
 		} else {
-			this.$el.html('');
-			var self = this;
+			var container = [];
 			_.each(this.collection.models, function(course){
-				self.renderCourse(course)
-			});
+				container.push(this.renderCourse(course));
+			}, this);
 		}
-
+			this.$el.html(container);
 	},
 
 	renderCourse: function(course){
 		var courseView = new app.CourseView({
 			model: course
 		});
-
-		this.$el.append(courseView.render());
+		return courseView.render();
 	},
 
 	searchClasses: function(event, query){
@@ -105,7 +115,6 @@ app.CourseListView = Backbone.View.extend({
         split = _.map(split, function(word){
           return new RegExp(word, "gi")
         })
-        console.log(split)
         var searched = _.filter(this.collection.original, function(course){
           for(var i = 0; i < split.length; i++){
             if(!split[i].test(course.get('title'))){
