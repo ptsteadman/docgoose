@@ -4,11 +4,13 @@ body {
   padding-top: 60px;
 }
 .navbar {
-  min-height: 47px !important;
+  min-height: 48px !important;
   background-color: #fff !important;
+  box-shadow: 0px 0px 4px #eee !important;
 }
 .navbar-fixed-bottom {
   background-color: transparent !important;
+  border: none !important;
 }
 .navbar-fixed-bottom a {
   margin-right: 17px;
@@ -17,7 +19,7 @@ a:hover {
   text-decoration: none !important;
 }
 nav .input-group {
-  margin-top: 6px;
+  margin-top: 5px;
   margin-left: 7px;
   margin-right: 7px;
 }
@@ -35,11 +37,11 @@ nav button {
 }
 a h1 {
   color: #99173c;
-  font-size: 26px !important;
-  text-shadow: 1px 1px 2px #bbbbbb;
+  font-size: 27px !important;
   margin-top: 8px;
   margin-bottom: 0px;
   transition: color 1s;
+  letter-spacing: 1px;
 }
 a h1:hover {
   color: #641f38;
@@ -72,7 +74,31 @@ a h1:hover .black {
   opacity: .8;
 }
 /* Search Results */
+.course {
+  border: 1px solid #eee;
+  padding: 5px 20px 5px 20px;
+  margin-top: 3px;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #484848;
+}
+.course:hover {
+  border: 1px solid #997982;
+  color: black;
+  box-shadow: 0px 0px 4px #ddc3ca;
+}
 /* Misc Body */
+.aboutList {
+  margin-top: 30px;
+  color: #fff;
+}
+.aboutList {
+  font-size: 24px !important;
+}
+.stats {
+  color: #fff;
+}
 /* Modals */
 #lean_overlay {
   position: fixed;
@@ -208,5 +234,5 @@ textarea.parsley-error {
 }
 /* EXPERIMENTAL */
 .shadow {
-  text-shadow: 1px 1px 1px #eeeeee, 2px 2px 1px #eeeeee, 3px 3px 1px #eeeeee, 4px 4px 1px rgba(238, 238, 238, 0.75),  0px 0px 1px #000;
+  text-shadow: 1px 1px 1px #e6d9dc, 2px 2px 1px #e6d9dc,  0px 0px 1px #000;
 }

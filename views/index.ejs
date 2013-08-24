@@ -7,13 +7,14 @@
     <meta name="author" content="Patrick Steadman & Clark Gredoña">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.css' />
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="icon" type="image/ico" href="/images/favicon.ico">
     </head>
     <body>
 	<nav class="navbar navbar-fixed-top">
     <div class='row'>
       <div class='col-sm-2 col-sm-offset-1 hidden-xs'>  
-        <a href="#"><h1 class='shadow'>docgoo<span class='black'>.se</span></h1></a>
+        <a href="#"><h1> docgoo<span class='black'>.se</span></h1></a>
       </div>
       <div class='col-sm-7 col-xs-12'>
             <div id='search-form' class='input-group'>
@@ -30,7 +31,7 @@
             </div>
       </div>
       <div id='navbar-link' class='col-sm-2 hidden-xs'>   
-    		<a rel="leanModal" class='shadow' name="renderUploadForm" href="#uploadForm">Upload</a>
+    		<a rel="leanModal" name="renderUploadForm" href="#uploadForm">Upload</a>
       </div>
     </div>
   </nav>
@@ -65,7 +66,13 @@
 
         <!-- TEMPLATES -->
         <script id='course-template' type='text/template'>
-          <h5><%= departmentCode %> <%= courseNumber %>: <%= title %></h5>
+          <div class='course-name'>
+            <h5><strong><%= departmentCode %> <%= courseNumber %>:</strong> <%= title %></h5>
+          </div>
+          <div class='course-status'>
+            <h6>0 Documents <i class="icon icon-upload-alt"></i></h6>
+
+          </div>
         </script>
         <script id='home-template' type='text/template'>
           <@ include about @>
