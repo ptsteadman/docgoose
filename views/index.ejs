@@ -16,7 +16,7 @@
         <a href="#"><h1 class='shadow'>docgoo<span class='black'>.se</span></h1></a>
       </div>
       <div class='col-sm-7 col-xs-12'>
-            <div class='input-group'>
+            <div id='search-form' class='input-group'>
               <input type="text" class="form-control" placeholder="Search by course code or name...">
               <div class="input-group-btn">
                 <button style='background-color: #b01c2e; color: white; border-color:rgb(170, 24, 24) ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Cornell <span style="color: white;" class="caret"></span></button>
@@ -40,7 +40,10 @@
     </div>
   </nav>
   <div class='container'>
-    <@ include about @>
+    <div id='main-content'>
+          <@ include about @>
+    </div>
+
 
         <div id="uploadForm">	<a class="modal_close" href="#"></a>
 
@@ -63,6 +66,7 @@
 
         <!-- TEMPLATES -->
         <script id='course-template' type='text/template'>
+          <h5><%= departmentCode %> <%= courseNumber %>: <%= title %></h5>
         </script>
 
         <!-- JAVASCRIPTS -->
