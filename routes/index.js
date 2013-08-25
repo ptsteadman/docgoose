@@ -1,4 +1,5 @@
 var geoip = require('geoip-lite');
+var async = require('async');
 var awsUploader = require('../util/awsUploader');
 var format = require('util').format;
 var distanceSorter = require('../util/distanceSorter');
@@ -24,12 +25,18 @@ exports.index = function (req, res) {
 exports.school = function (req, res) {
   var schoolToGet = req.params.name;
   school.findAll(function(schoolsFromMongo){
-    course.findBySchoolName(schoolToGet, function(coursesFromMongo){
-      res.render('index', {
-        title: schoolToGet,
-        schoolList: schoolsFromMongo,
-        courseList: coursesFromMongo       
-      });
+    async.filter(schoolsFromMongo, function(school, callback){
+        if (school.name == schoolToGet){ callback(true); } else {
+            callback(false);
+        }
+    }, function(theSchool){
+        course.findBySchoolName(schoolToGet, function(coursesFromMongo){
+          res.render('index', {
+            school: theSchool[0],
+            schoolList: schoolsFromMongo,
+            courseList: coursesFromMongo       
+          });
+        });
     });
   });
 }

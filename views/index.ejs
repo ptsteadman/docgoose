@@ -20,7 +20,7 @@
             <div id='search-form' class='input-group'>
               <input type="text" class="form-control" placeholder="Search by course code or name...">
               <div class="input-group-btn">
-                <button style='background-color: #b01c2e; color: white; border-color:rgb(170, 24, 24) ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Cornell <span style="color: white;" class="caret"></span></button>
+                <button style='background-color:<@= school.mainColor @>; color:<@= school.secondaryColor @>; border-color:<@= school.mainColor @> ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><@= school.name.charAt(0).toUpperCase() + school.name.slice(1) @> <span style=" border-top-color: <@= school.secondaryColor @>;" class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <@ schoolList.forEach(function(school, index){ @>
                      <li style="background-color: <@= school.mainColor @>"><a style='color:  <@= school.secondaryColor @>;' href="/<@= school.name @>"><b><@= school.name @></b></a></li>
@@ -41,27 +41,10 @@
     </div>
   </nav>
   <div class='container'>
-    <div id='main-content'>
-    </div>
+    <div id='main-content'></div>
 
 
-        <div id="uploadForm">	<a class="modal_close" href="#"></a>
-
-            <form id="actualUploadForm" method="post" enctype="multipart/form-data" action="/api/upload/" data-validate="parsley" onSubmit="return checkFile()">
-                <div class="txt-fld">
-                    <label for="">File name</label>
-                    <input type="text" name="title" data-required="true" />
-                    <p id='file_supports'>Examples: "Spring 2011 Final Exam", "Fall 2012 Assignment 7 Solution", "Summer 2013 Kirchoff's Rules Lecture Notes"</p>
-                </div>
-                <div class="file-fld">
-                    <input id="fileField" type="file" name="file" data-required="true" />
-                    <p id='file_support'>Supported file types: .txt, .pdf, .doc, .docx, .xls, .p, .f, .s, .tex, .java, .c, .nsf, .pptx, .sxi, .sxc</p>
-                </div>
-                <div class="btn-fld">
-                    <input type="submit" value="Upload" />
-                </div>
-            </form>
-        </div>
+        <!-- MODALS -->
 
 
         <!-- TEMPLATES -->
@@ -71,16 +54,15 @@
           </div>
           <div class='course-status'>
             <h6>0 Documents <i class="icon icon-upload-alt"></i></h6>
-
           </div>
         </script>
+
         <script id='home-template' type='text/template'>
           <@ include about @>
         </script>
 
         <!-- JAVASCRIPTS -->
         <script type='text/javascript' src='../javascripts/jquery-1.10.2.min.js'></script>
-        <script type='text/javascript' src='../javascripts/jquery.leanModal.min.js'></script>
         <script type='text/javascript' src='../javascripts/bootstrap.min.js'></script>
         <script type='text/javascript' src='../javascripts/underscore.js'></script>
         <script type='text/javascript' src='../javascripts/backbone-min.js'></script>
