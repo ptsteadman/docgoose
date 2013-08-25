@@ -11,13 +11,13 @@
     <link rel="icon" type="image/ico" href="/images/favicon.ico">
     </head>
     <body>
-	<nav class="navbar navbar-fixed-top">
+	<nav id='search-form' class="navbar navbar-fixed-top">
     <div class='row'>
       <div class='col-sm-2 col-sm-offset-1 hidden-xs'>  
         <a href="#"><h1> docgoo<span class='black'>.se</span></h1></a>
       </div>
       <div class='col-sm-7 col-xs-12'>
-            <div id='search-form' class='input-group'>
+            <div class='input-group'>
               <input type="text" class="form-control" placeholder="Search by course code or name...">
               <div class="input-group-btn">
                 <button style='background-color:<@= school.mainColor @>; color:<@= school.secondaryColor @>; border-color:<@= school.mainColor @> ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><@= school.name.charAt(0).toUpperCase() + school.name.slice(1) @> <span style=" border-top-color: <@= school.secondaryColor @>;" class="caret"></span></button>
@@ -31,13 +31,13 @@
             </div>
       </div>
       <div id='navbar-link' class='col-sm-2 hidden-xs'>   
-    		<a rel="leanModal" name="renderUploadForm" href="#uploadForm">Upload</a>
+    		<a href='#/upload'>Upload</a>
       </div>
     </div>
   </nav>
   <nav class="navbar navbar-fixed-bottom visible-xs">
     <div style='float: right;' id='navbar-link' class='col-xs-2 visible-xs'>   
-        <a rel="leanModal" name="renderUploadForm" href="#uploadForm">Upload</a>
+        <a href='#/upload'>Upload</a>
     </div>
   </nav>
   <div class='container'>
@@ -45,7 +45,31 @@
 
 
         <!-- MODALS -->
-
+        <div id='upload-modal' class='modal fade'>
+          <div class='modal-dialog'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+                <h4 class='modal-title'>Upload Documents</h4>
+              </div>
+              <div class='modal-body'>
+                  <p>Testing 123</p>
+                  <p>Testing 123</p>
+                  <p>Testing 123</p>
+                  <p>Testing 123</p>
+                  <p>Testing 123</p>
+                  <p>Testing 123</p>
+                  <p>Testing 123</p>
+                  <p>Testing 123</p>
+                  <p>Testing 123</p>
+              </div>
+              <div class='modal-footer'>
+                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                <button type='button' class='btn btn-success'>Upload!</button>
+              </div>
+            </div><!-- Modal Content -->
+          </div><!-- Modal Dialog -->
+        </div><!-- Modal -->
 
         <!-- TEMPLATES -->
         <script id='course-template' type='text/template'>

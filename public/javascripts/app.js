@@ -60,11 +60,17 @@ app.SearchForm = Backbone.View.extend({
 	el: "#search-form",
 
 	 events: {
-      "keyup input": "searchHandler"
+      "keyup input": "searchHandler",
+      "click a": "modalHandler"
     },
 
 	searchHandler: function(event){
 		Backbone.trigger('search', event, $("#search-form input").val());
+    },
+
+    modalHandler: function(event){
+    	console.log('modal')
+    	$('#upload-modal').modal();
     }
 });
 
