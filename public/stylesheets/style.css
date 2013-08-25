@@ -11,6 +11,7 @@ body {
 .navbar-fixed-bottom {
   background-color: transparent !important;
   border: none !important;
+  box-shadow: none !important;
 }
 .navbar-fixed-bottom a {
   margin-right: 17px;
@@ -40,8 +41,9 @@ a h1 {
   font-size: 27px !important;
   margin-top: 8px;
   margin-bottom: 0px;
-  transition: color 1s;
+  transition: color .4s;
   letter-spacing: 1px;
+  text-shadow: 1px 1px 2px #eee;
 }
 a h1:hover {
   color: #641f38;

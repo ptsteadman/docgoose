@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="docgoo.se is an open source platform for students and educators to share open source homework solutions, past exams, lecture notes, and more.">
     <meta name="author" content="Patrick Steadman & Clark Gredoña">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/bootstrap/bootstrap.css' />
+    <link rel='stylesheet' href='../stylesheets/style.css' />
+    <link rel='stylesheet' href='../stylesheets/bootstrap/bootstrap.css' />
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="icon" type="image/ico" href="/images/favicon.ico">
     </head>
@@ -79,15 +79,15 @@
         </script>
 
         <!-- JAVASCRIPTS -->
-        <script type='text/javascript' src='/javascripts/jquery-1.10.2.min.js'></script>
-        <script type='text/javascript' src='/javascripts/jquery.leanModal.min.js'></script>
-        <script type='text/javascript' src='/javascripts/bootstrap.min.js'></script>
-        <script type='text/javascript' src='/javascripts/underscore.js'></script>
-        <script type='text/javascript' src='/javascripts/backbone-min.js'></script>
-        <script type="text/javascript" src="/javascripts/parsley.js"></script>
+        <script type='text/javascript' src='../javascripts/jquery-1.10.2.min.js'></script>
+        <script type='text/javascript' src='../javascripts/jquery.leanModal.min.js'></script>
+        <script type='text/javascript' src='../javascripts/bootstrap.min.js'></script>
+        <script type='text/javascript' src='../javascripts/underscore.js'></script>
+        <script type='text/javascript' src='../javascripts/backbone-min.js'></script>
+        <script type="text/javascript" src="../javascripts/parsley.js"></script>
 
         <!-- BOOTSTRAPPING DATA INTO PAGE -->
-        <script type='text/javascript' src='javascripts/app.js'></script>
+        <script type='text/javascript' src='../javascripts/app.js'></script>
         <script>
           var data= <@- JSON.stringify(courseList) @>
           app.courseList = new app.CourseList;

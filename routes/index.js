@@ -5,6 +5,7 @@ var distanceSorter = require('../util/distanceSorter');
 var schools = require('../JSON/schools.json');
 var school = require('../mongo/school');  // school model
 var course = require('../mongo/course');  // course model
+var document = require('../mongo/document'); // document model
 
 exports.index = function (req, res) {
     //get IP address and send to correct school
@@ -16,14 +17,14 @@ exports.index = function (req, res) {
 		console.log(location);	
 		res.redirect('/' + schools[0].name);
 	} else {
-		res.redirect('/cornell'); //default if location can not be found
+		res.redirect('/cornell/'); //default if location can not be found
 	}	
 };
 
 exports.school = function (req, res) {
   var schoolToGet = req.params.name;
   school.findAll(function(schoolsFromMongo){
-    course.findAll(function(coursesFromMongo){
+    course.findBySchoolName(schoolToGet, function(coursesFromMongo){
       res.render('index', {
         title: schoolToGet,
         schoolList: schoolsFromMongo,
@@ -34,10 +35,9 @@ exports.school = function (req, res) {
 }
 
 
-exports.getClassJSON = function (req, res) {
-    res.render('index', {
-        title: 'getClassJson'
-    });
+exports.getCourseJSON = function (req, res) {
+    console.log(req.params.courseId)
+    res.send(200);
 };
 
 exports.getSchoolJSON = function (req, res) {
@@ -52,8 +52,9 @@ exports.uploadForm = function (req, res) {
 
 exports.upload = function (req, res) {
 	awsUploader.uploadFile(req);
-    //res.render('index', { title: 'upload' });
-    res.send(format('\nuploaded %s (%d Kb) to %s as %s', req.files.file.name, req.files.file.size / 1024 | 0, req.files.file.path, req.body.title));
+    document.createDocument(req, function(){
+        res.send(200);
+    });
 };
 
 exports.admin = function (req, res) {
