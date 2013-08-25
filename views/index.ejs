@@ -11,35 +11,37 @@
     <link rel="icon" type="image/ico" href="/images/favicon.ico">
     </head>
     <body>
-	<nav id='search-form' class="navbar navbar-fixed-top">
-    <div class='row'>
-      <div class='col-sm-2 col-sm-offset-1 hidden-xs'>  
-        <a href="#"><h1> docgoo<span class='black'>.se</span></h1></a>
-      </div>
-      <div class='col-sm-7 col-xs-12'>
-            <div class='input-group'>
-              <input type="text" class="form-control" placeholder="Search by course code or name...">
-              <div class="input-group-btn">
-                <button style='background-color:<@= school.mainColor @>; color:<@= school.secondaryColor @>; border-color:<@= school.mainColor @> ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><@= school.name.charAt(0).toUpperCase() + school.name.slice(1) @> <span style=" border-top-color: <@= school.secondaryColor @>;" class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <@ schoolList.forEach(function(school, index){ @>
-                     <li style="background-color: <@= school.mainColor @>"><a style='color:  <@= school.secondaryColor @>;' href="/<@= school.name @>"><b><@= school.name @></b></a></li>
-                    <@ }) @>
-                    <li><a href="#">Add Your School</a></li>
-                </ul>
-              </div>
-            </div>
-      </div>
-      <div id='navbar-link' class='col-sm-2 hidden-xs'>   
-    		<a href='#/upload'>Upload</a>
-      </div>
+    <div id='search-nav'>
+    	<nav id='search-form' class="navbar navbar-fixed-top">
+        <div class='row'>
+          <div class='col-sm-2 col-sm-offset-1 hidden-xs'>  
+            <a href="#"><h1> docgoo<span class='black'>.se</span></h1></a>
+          </div>
+          <div class='col-sm-7 col-xs-12'>
+                <div class='input-group'>
+                  <input type="text" class="form-control" placeholder="Search by course code or name...">
+                  <div class="input-group-btn">
+                    <button style='background-color:<@= school.mainColor @>; color:<@= school.secondaryColor @>; border-color:<@= school.mainColor @> ;' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><@= school.name.charAt(0).toUpperCase() + school.name.slice(1) @> <span style=" border-top-color: <@= school.secondaryColor @>;" class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <@ schoolList.forEach(function(school, index){ @>
+                         <li style="background-color: <@= school.mainColor @>"><a style='color:  <@= school.secondaryColor @>;' href="/<@= school.name @>"><b><@= school.name @></b></a></li>
+                        <@ }) @>
+                        <li><a href="#">Add Your School</a></li>
+                    </ul>
+                  </div>
+                </div>
+          </div>
+          <div id='navbar-link' class='col-sm-2 hidden-xs'>   
+        		<a href='#/upload'>Upload</a>
+          </div>
+        </div>
+      </nav>
+      <nav class="navbar navbar-fixed-bottom visible-xs">
+        <div style='float: right;' id='navbar-link' class='col-xs-2 visible-xs'> 
+            <a href='#/upload'>Upload</a>
+        </div>
+      </nav>
     </div>
-  </nav>
-  <nav class="navbar navbar-fixed-bottom visible-xs">
-    <div style='float: right;' id='navbar-link' class='col-xs-2 visible-xs'>   
-        <a href='#/upload'>Upload</a>
-    </div>
-  </nav>
   <div class='container'>
     <div id='main-content'></div>
 

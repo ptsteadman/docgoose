@@ -16,7 +16,7 @@ app.Router = Backbone.Router.extend({
 
 	search: function(query){
 		$("#search-form input").val(query);
-		app.searchForm.searchHandler();
+		app.searchNav.searchHandler();
 	},
 
 	cornellnoslash: function(){
@@ -56,8 +56,8 @@ app.HomeView = Backbone.View.extend({
 
 // Forms
 
-app.SearchForm = Backbone.View.extend({
-	el: "#search-form",
+app.SearchNav = Backbone.View.extend({
+	el: "#search-nav",
 
 	 events: {
       "keyup input": "searchHandler",
@@ -86,7 +86,7 @@ app.CourseList = Backbone.Collection.extend({
 			this.original = this.models;
 			app.homeView = new app.HomeView();
 			app.courseListView = new app.CourseListView();
-			app.searchForm = new app.SearchForm();
+			app.searchNav = new app.searchNav();
 			app.router = new app.Router();
 			Backbone.history.start();
 		}, this);
