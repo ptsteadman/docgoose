@@ -86,7 +86,7 @@ app.CourseList = Backbone.Collection.extend({
 			this.original = this.models;
 			app.homeView = new app.HomeView();
 			app.courseListView = new app.CourseListView();
-			app.searchNav = new app.searchNav();
+			app.searchNav = new app.SearchNav();
 			app.router = new app.Router();
 			Backbone.history.start();
 		}, this);
