@@ -109,7 +109,7 @@ app.UploadModal = Backbone.View.extend({
 	      $('#test-progress-bar').css('width', percentComplete.toString() + '%' );
 	    }
 	    else {
-	      document.getElementById('progressNumber').innerHTML = 'unable to compute';
+	      console.log('Unable to compute upload %')
 	    }
 	}
 })

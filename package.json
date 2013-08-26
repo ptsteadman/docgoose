@@ -12,7 +12,6 @@
     "mongoose": "*",
     "async": "*",
     "aws-sdk": "*",
-    "geoip-lite":"*",
-    "moment": "*"
+    "geoip-lite":"*"
   }
 }

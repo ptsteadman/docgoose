@@ -8,8 +8,6 @@ var school = require('../mongo/school');  // school model
 var course = require('../mongo/course');  // course model
 var document = require('../mongo/document'); // document model
 var crypto = require('crypto');
-var momemt = require('moment');
-var AWS = require('aws-sdk');
 
 exports.index = function (req, res) {
     //get IP address and send to correct school
@@ -58,6 +56,8 @@ exports.getSchoolJSON = function (req, res) {
 
 exports.upload = function (req, res) {
 
+    //TODO: make this secure
+
     POLICY_JSON = { "expiration": "2020-12-01T12:00:00.000Z",
             "conditions": [
             {"bucket": 'docgoose'},
@@ -72,66 +72,12 @@ exports.upload = function (req, res) {
     var secret = 'utjjHYg7i5VqzOJ5tFB8BVc2TQdAlAP5ABNFY0x5';
     var policyBase64 = new Buffer(JSON.stringify(POLICY_JSON)).toString('base64');
     var signature = crypto.createHmac("sha1", secret).update(policyBase64).digest("base64")
-    console.log(signature);
     var result = {
         policy: policyBase64,
         signature: signature
     }
 
     res.json(result);
-
-
-
-    /*
-    AWS.config.update({accessKeyId: 'AKIAI4L23ZQPPVRPBPDQ', secretAccessKey: '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', region: "us-west-2"});
-    var s3 = new AWS.S3(); 
-    var params = {Bucket: 'docgoose', Key: 'Capture.PNG'};
-    var url = s3.getSignedUrl('putObject', params);
-    console.log("The URL is", url);
-
-    var result = {
-        signed_request: url,
-        url: "https://s3-us-west-2.amazonaws.com/docgoose/Capture"
-    }
-
-    res.json(result);
-    */
-/*
-    var signature = function(policy){
-        return crypto.createHmac('sha1', 'YpHQ7bnEPFJR2dUngJ0xfTw7BHx/FbHsPh23xmyq').update(policy).digest('base64'); 
-    }
-
-    var policy = function(){
-        var s3Policy = {
-            expiration: moment.utc().add('minutes', 30).format('YYYY-MM-DDTHH:mm:ss\\Z'),
-            conditions: [
-                { bucket: 'docgoose'},
-                { acl: 'public-read-write'},
-                { success_action_status: '201'},
-                ['starts-with', '$key', ''],
-                ['starts-with', '$Content-Type', 'image/']
-            ]
-        }
-
-        return new Buffer(JSON.stringify(s3Policy)).toString('base64');
-    }
-
-    var p = policy();
-    var s = signature(p);
-
-    res.render('index', {
-        signature: s,
-        policy: p,
-        uid: uuid.v1(),
-        aws_key: 'AKIAJVXQUGSA5JUW7XUQ',
-        aws_bucket: 'docgoose'
-    });
-
-
-    document.createDocument(req, function(){
-        res.send(200);
-    });
-*/
 };
 
 exports.admin = function (req, res) {
