@@ -71,7 +71,7 @@ app.UploadModal = Backbone.View.extend({
 	setCourse: function(model){
 		this.model = model;
 		this.itemArray = new Array();
-		$('upload-items-container').html();
+		$('upload-items-container').html('');
 		this.addUploadItem();
 	},
 
@@ -120,7 +120,6 @@ app.UploadItem = Backbone.View.extend({
 		}
 
 		var file = this.$('.fileupload')[0].files[0];
-		console.log(file)
 		var key = file.name;
 		var fd = new FormData();
 		var self = this;
