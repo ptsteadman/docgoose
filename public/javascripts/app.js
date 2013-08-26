@@ -7,7 +7,7 @@ app.Router = Backbone.Router.extend({
 	routes: {
 		'' : 'home',
 		'search/:query': 'search',
-		'/cornell': 'cornellnoslash'
+		'upload':'upload'
 	},
 
 	home: function(){
@@ -17,6 +17,10 @@ app.Router = Backbone.Router.extend({
 	search: function(query){
 		$("#search-form input").val(query);
 		app.searchNav.searchHandler();
+	},
+
+	upload: function(){
+		$('#upload-modal').modal();
 	}
 });
 
@@ -56,27 +60,68 @@ app.UploadModal = Backbone.View.extend({
 	el: '#upload-modal',
 
 	events: {
-		"change input": "fileHandler"
+		"click button#upload-all": "uploadHandler",
+		"click #add-upload-item": "addUploadItem"
 	},
 
-	fileHandler: function(){
-		  function uploadComplete(evt) {
-		    /* This event is raised when the server send back a response */
-		    alert("Done - " + evt.target.responseText );
-		  }
+	uploadHandler: function(event){
+		Backbone.trigger('submit-uploads');
+	},
 
-		  function uploadFailed(evt) {
-		    alert("There was an error attempting to upload the file." + evt);
-		  }
+	setCourse: function(model){
+		this.model = model;
+		this.itemArray = new Array();
+		$('upload-items-container').html();
+		this.addUploadItem();
+	},
 
-		  function uploadCanceled(evt) {
-		    alert("The upload has been canceled by the user or the browser dropped the connection.");
-		  }
+	addUploadItem: function(){
+		this.itemArray.push(new app.UploadItem(this.model))
+		$('#upload-items-container').append(this.itemArray[this.itemArray.length - 1].render());
 
-		var file = document.getElementById('fileupload').files[0];
-		console.log(file);
+	}
+});
+
+app.UploadItem = Backbone.View.extend({
+	className: 'upload-item',
+	template: '#upload-item-template',
+
+	initialize: function(model){
+		Backbone.on('submit-uploads', this.upload);
+		this.model = model;
+	},
+
+	render: function(){
+		var template = app.TemplateCache.get(this.template);
+		this.$el.html(template(this.model.attributes));
+		return this.$el;
+	},
+
+	upload: function(){
+		var self = this;
+
+		function uploadProgress (event){
+		    if (event.lengthComputable) {
+		      var percentComplete = Math.round(event.loaded * 100 / event.total);
+		      self.$('.progress-bar').css('width', percentComplete.toString() + '%' );
+		    }
+		}
+
+		function uploadComplete(evt) {
+		   alert("Done - " + evt.target.responseText );
+		}
+
+		function uploadFailed(evt) {
+		   alert("There was an error attempting to upload the file." + evt);
+		}
+
+		function uploadCanceled(evt) {
+		   alert("The upload has been canceled by the user or the browser dropped the connection.");
+		}
+
+		var file = this.$('.fileupload')[0].files[0];
+		console.log(file)
 		var key = file.name;
-		console.log(key);
 		var fd = new FormData();
 		var self = this;
 		$.ajax({
@@ -92,7 +137,7 @@ app.UploadModal = Backbone.View.extend({
 			fd.append('file', file);
 
 			var xhr = new XMLHttpRequest();
-			xhr.upload.addEventListener("progress", self.uploadProgress, false);
+			xhr.upload.addEventListener("progress", uploadProgress, false);
     		xhr.addEventListener("load", uploadComplete, false);
 		    xhr.addEventListener("error", uploadFailed, false);
 		    xhr.addEventListener("abort", uploadCanceled, false);
@@ -101,18 +146,9 @@ app.UploadModal = Backbone.View.extend({
 			xhr.send(fd);
 		}
 	});
-	},
-
-	uploadProgress: function(event){
-	    if (event.lengthComputable) {
-	      var percentComplete = Math.round(event.loaded * 100 / event.total);
-	      $('#test-progress-bar').css('width', percentComplete.toString() + '%' );
-	    }
-	    else {
-	      console.log('Unable to compute upload %')
-	    }
 	}
-})
+
+});
 
 app.SearchNav = Backbone.View.extend({
 	el: "#search-nav",
@@ -127,7 +163,7 @@ app.SearchNav = Backbone.View.extend({
     },
 
     modalHandler: function(event){
-    	console.log('modal')
+    	app.uploadModal.setCourse(this.model);
     	$('#upload-modal').modal();
     }
 });
@@ -157,7 +193,8 @@ app.CourseView = Backbone.View.extend({
 	template: '#course-template',
 
 	events: {
-		"click": "getDocuments"
+		"click .course-name": "getDocuments",
+		"click .course-status": "upload"
 	},
 
 	render: function(){
@@ -170,7 +207,12 @@ app.CourseView = Backbone.View.extend({
 		this.documentListView = new app.DocumentListView(this.model.attributes._id);
 		document.location.hash = "/search/" +  $("#search-form input").val();
 		this.$el.animate({height: '500px'}, 500);
-	}	
+	},
+
+	upload: function(){
+		app.uploadModal.setCourse(this.model);
+		$('#upload-modal').modal();
+	}
 });
 
 app.CourseListView = Backbone.View.extend({
