@@ -17,10 +17,6 @@ app.Router = Backbone.Router.extend({
 	search: function(query){
 		$("#search-form input").val(query);
 		app.searchNav.searchHandler();
-	},
-
-	cornellnoslash: function(){
-		console.log('cornell-no-slash')
 	}
 });
 
@@ -56,6 +52,68 @@ app.HomeView = Backbone.View.extend({
 
 // Forms
 
+app.UploadModal = Backbone.View.extend({
+	el: '#upload-modal',
+
+	events: {
+		"change input": "fileHandler"
+	},
+
+	fileHandler: function(){
+		  function uploadComplete(evt) {
+		    /* This event is raised when the server send back a response */
+		    alert("Done - " + evt.target.responseText );
+		  }
+
+		  function uploadFailed(evt) {
+		    alert("There was an error attempting to upload the file." + evt);
+		  }
+
+		  function uploadCanceled(evt) {
+		    alert("The upload has been canceled by the user or the browser dropped the connection.");
+		  }
+
+		var file = document.getElementById('fileupload').files[0];
+		console.log(file);
+		var key = file.name;
+		console.log(key);
+		var fd = new FormData();
+		var self = this;
+		$.ajax({
+		method: "GET",
+		url: '/api/upload',
+		success: function(data, status, xhr){
+			fd.append('key', key);
+			fd.append('acl', 'public-read');
+			fd.append('AWSAccessKeyId', 'AKIAI4L23ZQPPVRPBPDQ');
+			fd.append('Content-Type', file.type);  
+			fd.append('policy', data.policy);
+			fd.append('signature', data.signature);
+			fd.append('file', file);
+
+			var xhr = new XMLHttpRequest();
+			xhr.upload.addEventListener("progress", self.uploadProgress, false);
+    		xhr.addEventListener("load", uploadComplete, false);
+		    xhr.addEventListener("error", uploadFailed, false);
+		    xhr.addEventListener("abort", uploadCanceled, false);
+
+			xhr.open('POST', 'https://docgoose.s3.amazonaws.com/', true); 
+			xhr.send(fd);
+		}
+	});
+	},
+
+	uploadProgress: function(event){
+	    if (event.lengthComputable) {
+	      var percentComplete = Math.round(event.loaded * 100 / event.total);
+	      $('#test-progress-bar').css('width', percentComplete.toString() + '%' );
+	    }
+	    else {
+	      document.getElementById('progressNumber').innerHTML = 'unable to compute';
+	    }
+	}
+})
+
 app.SearchNav = Backbone.View.extend({
 	el: "#search-nav",
 
@@ -87,6 +145,7 @@ app.CourseList = Backbone.Collection.extend({
 			app.homeView = new app.HomeView();
 			app.courseListView = new app.CourseListView();
 			app.searchNav = new app.SearchNav();
+			app.uploadModal = new app.UploadModal();
 			app.router = new app.Router();
 			Backbone.history.start();
 		}, this);
