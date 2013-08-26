@@ -50,7 +50,7 @@ app.get('/', routes.index);
 app.get('/:name', routes.school);
 app.get('/api/school/:name', routes.getSchoolJSON);  // human readable
 app.get('/api/course/:courseId', routes.getCourseJSON);  // class id
-app.get('/api/upload', routes.upload);
+app.post('/api/upload', routes.upload);
 app.get('/api/admin', auth, routes.admin);
 
 app.post('/api/resetschools', routes.resetSchools);  // TODO: secure

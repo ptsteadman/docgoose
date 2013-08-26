@@ -71,14 +71,13 @@ app.UploadModal = Backbone.View.extend({
 	setCourse: function(model){
 		this.model = model;
 		this.itemArray = new Array();
-		$('upload-items-container').html('');
+		$('#upload-items-container').html('');
 		this.addUploadItem();
 	},
 
 	addUploadItem: function(){
 		this.itemArray.push(new app.UploadItem(this.model))
 		$('#upload-items-container').append(this.itemArray[this.itemArray.length - 1].render());
-
 	}
 });
 
@@ -87,65 +86,84 @@ app.UploadItem = Backbone.View.extend({
 	template: '#upload-item-template',
 
 	initialize: function(model){
-		Backbone.on('submit-uploads', this.upload);
+		Backbone.on('submit-uploads', this.upload, this);
 		this.model = model;
 	},
 
 	render: function(){
 		var template = app.TemplateCache.get(this.template);
 		this.$el.html(template(this.model.attributes));
+		this.$('.form-control.course').val(this.model.attributes._id);
 		return this.$el;
+	},
+
+
+	uploadProgress: function(event){
+		console.log('hi')
+		if (event.lengthComputable) {
+		      var percentComplete = Math.round(event.loaded * 100 / event.total);
+		      this.$('.progress-bar').css('width', percentComplete.toString() + '%' );
+		}
+	},
+
+	uploadComplete: function(data, status, xhr){
+		this.$el.html('<h5>Done!</h5>');
 	},
 
 	upload: function(){
 		var self = this;
 
-		function uploadProgress (event){
-		    if (event.lengthComputable) {
-		      var percentComplete = Math.round(event.loaded * 100 / event.total);
-		      self.$('.progress-bar').css('width', percentComplete.toString() + '%' );
-		    }
-		}
-
-		function uploadComplete(evt) {
-		   alert("Done - " + evt.target.responseText );
-		}
-
-		function uploadFailed(evt) {
-		   alert("There was an error attempting to upload the file." + evt);
-		}
-
-		function uploadCanceled(evt) {
-		   alert("The upload has been canceled by the user or the browser dropped the connection.");
-		}
-
 		var file = this.$('.fileupload')[0].files[0];
-		var key = file.name;
-		var fd = new FormData();
-		var self = this;
+		var course = this.$('.form-control.course').val();
+		var name = this.$('.form-control.name').val();
+		var school = this.model.get('_school');
+		var key = school + '/' + course + '/' + file.name;
+		var fd1 = new FormData();
+		fd1.append('key', key);
+		fd1.append('school', school);
+		fd1.append('course', course);
+		fd1.append('name', name);
 		$.ajax({
-		method: "GET",
+		type: "POST",
 		url: '/api/upload',
+		processData: false,
+		contentType: false,
+		data: fd1,
 		success: function(data, status, xhr){
-			fd.append('key', key);
-			fd.append('acl', 'public-read');
-			fd.append('AWSAccessKeyId', 'AKIAI4L23ZQPPVRPBPDQ');
-			fd.append('Content-Type', file.type);  
-			fd.append('policy', data.policy);
-			fd.append('signature', data.signature);
-			fd.append('file', file);
+			var fd2 = new FormData();
+			fd2.append('key', key);
+			fd2.append('acl', 'public-read');
+			fd2.append('AWSAccessKeyId', 'AKIAI4L23ZQPPVRPBPDQ');
+			fd2.append('Content-Type', file.type);  
+			fd2.append('policy', data.policy);
+			fd2.append('signature', data.signature);
+			fd2.append('file', file);
 
-			var xhr = new XMLHttpRequest();
-			xhr.upload.addEventListener("progress", uploadProgress, false);
-    		xhr.addEventListener("load", uploadComplete, false);
-		    xhr.addEventListener("error", uploadFailed, false);
-		    xhr.addEventListener("abort", uploadCanceled, false);
+			$.ajax({
 
-			xhr.open('POST', 'https://docgoose.s3.amazonaws.com/', true); 
-			xhr.send(fd);
+				xhr: function(){
+
+					var xhr = new window.XMLHttpRequest();
+					xhr.upload.addEventListener("progress", function(event){
+						self.uploadProgress(event);
+					});
+					return xhr;
+				},
+
+
+				type: 'POST',
+				url: 'https://docgoose.s3.amazonaws.com/',
+				data: fd2,
+				processData: false,
+				contentType: false,
+				success: function(data, status, xhr){
+					self.uploadComplete();
+				}
+			});
 		}
 	});
 	}
+
 
 });
 

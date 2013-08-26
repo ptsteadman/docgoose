@@ -45,7 +45,9 @@ exports.school = function (req, res) {
 
 exports.getCourseJSON = function (req, res) {
     console.log(req.params.courseId)
-    res.send(200);
+    document.findByCourseName(req.params.courseId, function(data){
+        res.json(data);
+    })
 };
 
 exports.getSchoolJSON = function (req, res) {
@@ -55,6 +57,10 @@ exports.getSchoolJSON = function (req, res) {
 };
 
 exports.upload = function (req, res) {
+
+    document.createDocument(req.body, function(){
+        console.log('Document Saved:' + req.body.key);
+    })
 
     //TODO: make this secure
 
