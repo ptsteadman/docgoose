@@ -68,10 +68,10 @@
           <div class='row'>
             <div class='col-xs-10'>
               <div class='course-name'>
-                <h5><strong><%= departmentCode %> <%= courseNumber %>:</strong> <%= title %></h5>
+                <h4><strong><%= departmentCode %> <%= courseNumber %>:</strong> <%= title %></h4>
               </div>
               <div class='course-status'>
-                <h6>0 Documents</h6>
+                <h5><i class='icon icon-expand-alt'></i> 0 Documents</h5>
               </div>
             </div>
             <div class='col-xs-2 upload-container'>
@@ -101,7 +101,13 @@
         </script>
 
         <script id='document-template' type='text/template'>
-          <a href='<%= link %>' target='_blank'><i class='icon icon-file-alt'></i> <%= _id %></a> 
+          <div class='left'><i class='icon icon-file-alt'></i></div>
+          <div class='center'>
+            <a href='<%= link %>' target='_blank'> <%= _id %></a> 
+          </div>
+          <div class='right'>
+            <h6>9/1/2013</h6>
+          </div>
         </script>
 
         <!-- JAVASCRIPTS -->

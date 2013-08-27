@@ -213,6 +213,7 @@ app.CourseView = Backbone.View.extend({
 
 	events: {
 		"click .course-name": "getDocuments",
+		"click .course-status": "getDocuments",
 		"click .course-upload": "upload"
 	},
 
@@ -226,6 +227,7 @@ app.CourseView = Backbone.View.extend({
 		this.documentListView = new app.DocumentListView({_id: this.model.attributes._id});
 		Backbone.on('loaded-documents', function(){
 			this.$('.course-documents').html(this.documentListView.$el).hide().fadeIn();
+			this.$('course-status').hide().fadeIn();
 		}, this);
 		document.location.hash = "/search/" +  $("#search-form input").val();
 		this.$('.course-status').addClass('tabbed');
@@ -311,7 +313,7 @@ app.DocumentList = Backbone.Collection.extend({
 });
 
 app.DocumentView = Backbone.View.extend({
-	className: 'document',
+	className: 'document clearfix',
 	template: '#document-template',
 
 	render: function(){

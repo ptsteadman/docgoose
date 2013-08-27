@@ -109,16 +109,22 @@ a h1:hover {
     color: @evening;
 }
 
+.course h4 {
+    font-size: 18px;
+}
+
 .course-left {
     width: 80%;
 }
 .course-status{
-    color: @shadow;
-    cursor: pointer; 
+    color: mix(@docgoose-red, @evening, 70%);
+    cursor: pointer;
+    margin-left: -5px; 
 }
 
 .course-name{
     cursor: pointer;
+    margin-left: -5px;
 }
 
 .course-upload {
@@ -129,7 +135,7 @@ a h1:hover {
 }
 
 .course-upload:hover {
-    color: mix(@docgoose-red, @evening, 50%);
+    color: mix(@docgoose-red, @evening, 30%);
 }
 
 .upload-icon {
@@ -146,14 +152,16 @@ a h1:hover {
 
 .tabbed{
     height: 0px;
-    border-bottom: 30px solid darken(@hex, 40%);
+    border-bottom: 30px solid darken(@hex, 45%);
     border-right: 10px solid transparent;
     line-height: 30px;
     display: inline-block; 
-    padding-left: 10px;
-    padding-right: 15px;
-    padding-bottom: 3px;
+    padding-left: 15px;
+    padding-right: 20px;
+    padding-bottom: 4px;
     color: white;
+    text-shadow: 1px 1px 2px @shadow;
+    margin-top: -7px;
 
 }
 
@@ -164,17 +172,41 @@ a h1:hover {
 }
 
 .document-list {
-    border: 2px solid darken(@hex, 40%);
+    border: 2px solid darken(@hex, 45%);
     border-radius: 2px;
+    border-top-left-radius: 0px;
     padding: 5px 10px 5px 10px;
     margin-bottom: 5px;
+    margin-left: -5px;
+    margin-right: -5px;
 
 }
+
+
 .document {
     color: @evening;
-    margin: 5px 2px;
-    padding: 2px 5px 2px 15px;
-  
+    border-bottom: 1px dashed #eee;
+    padding-top: 5px;
+}
+
+.left {
+    float: left;
+    width: 3%;
+
+}
+
+.center {
+    float: left;
+    width: 85%;
+}
+
+.right {
+    float: left;
+    width: 5%;
+}
+
+.document:hover {
+    background-color: #eee;
 }
 
 .document a {

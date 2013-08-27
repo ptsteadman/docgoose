@@ -81,15 +81,20 @@ a h1:hover .black {
   background-color: #fff;
   color: #2e2633;
 }
+.course h4 {
+  font-size: 18px;
+}
 .course-left {
   width: 80%;
 }
 .course-status {
-  color: #555152;
+  color: #791c39;
   cursor: pointer;
+  margin-left: -5px;
 }
 .course-name {
   cursor: pointer;
+  margin-left: -5px;
 }
 .course-upload {
   margin-top: 11px;
@@ -98,7 +103,7 @@ a h1:hover .black {
   text-shadow: 1px 1px 2px #eee;
 }
 .course-upload:hover {
-  color: #641f38;
+  color: #4e2236;
 }
 .upload-icon {
   margin-left: 7px;
@@ -111,14 +116,16 @@ a h1:hover .black {
 /* Documents */
 .tabbed {
   height: 0px;
-  border-bottom: 30px solid #83a437;
+  border-bottom: 30px solid #749131;
   border-right: 10px solid transparent;
   line-height: 30px;
   display: inline-block;
-  padding-left: 10px;
-  padding-right: 15px;
-  padding-bottom: 3px;
+  padding-left: 15px;
+  padding-right: 20px;
+  padding-bottom: 4px;
   color: white;
+  text-shadow: 1px 1px 2px #555152;
+  margin-top: -7px;
 }
 @media screen and (-webkit-animation) {
   .course-status {
@@ -126,15 +133,33 @@ a h1:hover .black {
   }
 }
 .document-list {
-  border: 2px solid #83a437;
+  border: 2px solid #749131;
   border-radius: 2px;
+  border-top-left-radius: 0px;
   padding: 5px 10px 5px 10px;
   margin-bottom: 5px;
+  margin-left: -5px;
+  margin-right: -5px;
 }
 .document {
   color: #2e2633;
-  margin: 5px 2px;
-  padding: 2px 5px 2px 15px;
+  border-bottom: 1px dashed #eee;
+  padding-top: 5px;
+}
+.left {
+  float: left;
+  width: 3%;
+}
+.center {
+  float: left;
+  width: 85%;
+}
+.right {
+  float: left;
+  width: 5%;
+}
+.document:hover {
+  background-color: #eee;
 }
 .document a {
   color: black;
