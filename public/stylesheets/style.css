@@ -152,7 +152,7 @@ a h1:hover .black {
 }
 .center {
   float: left;
-  width: 85%;
+  min-width: 85%;
 }
 .right {
   float: left;
@@ -188,4 +188,7 @@ ul {
 }
 .progress {
   margin-bottom: 0px !important;
+}
+.well {
+  background-color: #FAFAFA !important;
 }
