@@ -102,7 +102,7 @@ a h1:hover {
 
 .course {
     border: 1px solid #eee;
-    padding: 5px 20px 5px 20px;
+    padding: 5px 20px 7px 20px;
     margin-top: 3px;
     border-radius: 2px;
     background-color: #fff;
@@ -117,7 +117,7 @@ a h1:hover {
     width: 80%;
 }
 .course-status{
-    color: mix(@docgoose-red, @evening, 70%);
+    color: mix(@hex, @evening, 40%);
     cursor: pointer;
     margin-left: -5px; 
 }
@@ -220,6 +220,10 @@ a h1:hover {
 
 /* Misc Body */
 
+ul {
+    list-style-type: none !important;
+}
+
 .aboutList {
     margin-top: 30px;
     color: #fff;
@@ -239,43 +243,6 @@ a h1:hover {
     border-radius: 3px !important;
 }
 
-
-/* EXPERIMENTAL */
-
-// Text-shadow
-.longShadow(@color, @size, @spread: 100, @flag: 1, @tmp: '') when (@size > 0) {
-  @percent: round(@flag / @size * 100) * @spread;
-  @shadowColor: fade(@color, @percent);
-  @shadow: ~"@{size}px @{size}px 1px @{shadowColor}";
-  @ends: ~"@{shadow}, @{tmp}";
-  @shadowString: ~"@{ends} 0px 0px 1px #000";
-
-  .longShadowLoop(@string, @index) when (@index < 1) {
-    text-shadow: @string;
-  }
-
-  .longShadowLoop(@shadowString, @size - 1);
-  .longShadow(@color, @size - 1, @spread, @flag + 1, @ends);
-}
-
-// Box-shadow
-.longShadowBox(@color, @size, @spread: 1, @flag: 1, @tmp: '') when (@size > 0) {
-  @percent: round(@flag / @size * 100) * @spread;
-  @shadowColor: fade(@color, @percent);
-  @shadow: ~"@{size}px @{size}px 0 0 @{shadowColor}";
-  @ends: ~"@{shadow}, @{tmp}";
-  @shadowString: ~"@{ends} 0px 0px 0 0 #000";
-
-  .longShadowLoop(@string, @index) when (@index < 1) {
-    -webkit-box-shadow: @string;
-       -moz-box-shadow: @string;
-            box-shadow: @string;
-  }
-
-  .longShadowLoop(@shadowString, @size - 1);
-  .longShadowBox(@color, @size - 1, @spread, @flag + 1, @ends);
-}
-
-.shadow{
-    .longShadow(mix(@docgoose-red, #eee, 10%), 2, 3);
+.progress {
+    margin-bottom: 0px !important;
 }

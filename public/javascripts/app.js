@@ -109,11 +109,12 @@ app.UploadItem = Backbone.View.extend({
 
 	uploadComplete: function(data, status, xhr){
 		this.view.getDocuments();
-		this.$el.html('<h5>Done!</h5>');
+		this.$el.html("<div class='well well-sm'><center><h5 style='color: #749131;'>Done!</h5></center></div>");
 	},
 
 	upload: function(){
 		var self = this;
+		$("#progress-bar-group").css('display', 'block');
 
 		var file = this.$('.fileupload')[0].files[0];
 		var course = this.$('.form-control.course').val();
