@@ -68,15 +68,15 @@ app.UploadModal = Backbone.View.extend({
 		Backbone.trigger('submit-uploads');
 	},
 
-	setCourse: function(model){
-		this.model = model;
+	setCourse: function(view){
+		this.view = view;
 		this.itemArray = new Array();
 		$('#upload-items-container').html('');
 		this.addUploadItem();
 	},
 
 	addUploadItem: function(){
-		this.itemArray.push(new app.UploadItem(this.model))
+		this.itemArray.push(new app.UploadItem({view: this.view }))
 		$('#upload-items-container').append(this.itemArray[this.itemArray.length - 1].render());
 	}
 });
@@ -85,9 +85,10 @@ app.UploadItem = Backbone.View.extend({
 	className: 'upload-item',
 	template: '#upload-item-template',
 
-	initialize: function(model){
+	initialize: function(){
 		Backbone.on('submit-uploads', this.upload, this);
-		this.model = model;
+		this.view = this.options.view;
+		this.model = this.options.view.model;
 	},
 
 	render: function(){
@@ -107,6 +108,7 @@ app.UploadItem = Backbone.View.extend({
 	},
 
 	uploadComplete: function(data, status, xhr){
+		this.view.getDocuments();
 		this.$el.html('<h5>Done!</h5>');
 	},
 
@@ -221,13 +223,16 @@ app.CourseView = Backbone.View.extend({
 	},
 
 	getDocuments: function(){
-		this.documentListView = new app.DocumentListView(this.model.attributes._id);
+		this.documentListView = new app.DocumentListView({_id: this.model.attributes._id});
+		Backbone.on('loaded-documents', function(){
+			this.$('.course-documents').html(this.documentListView.$el);
+		}, this);
 		document.location.hash = "/search/" +  $("#search-form input").val();
-		this.$el.animate({height: '500px'}, 500);
+		
 	},
 
 	upload: function(){
-		app.uploadModal.setCourse(this.model);
+		app.uploadModal.setCourse(this);
 		$('#upload-modal').modal();
 	}
 });
@@ -303,20 +308,48 @@ app.DocumentList = Backbone.Collection.extend({
 	}
 });
 
-app.DocumentView = Backbone.Collection.extend({
+app.DocumentView = Backbone.View.extend({
+	className: 'document',
+	template: '#document-template',
+
+	render: function(){
+		var template = app.TemplateCache.get(this.template);
+		console.log(this.model)
+		this.$el.html(template(this.model.attributes));
+		return this.$el;
+	}
 
 });
 
-app.DocumentListView = Backbone.Collection.extend({
+app.DocumentListView = Backbone.View.extend({
 	className: 'document-list',
 
-	initialize: function(_id){
-		this.documentList = new app.DocumentList(_id);
-		this.documentList.fetch({
+	initialize: function(){
+		var self = this;
+		console.log(this.options._id)
+		this.collection = new app.DocumentList(this.options._id);
+		this.collection.fetch({
 			success: function(response, xhr){
-				console.log('success');
-				console.log(response);
+			 	self.render();
+			 	Backbone.trigger('loaded-documents');
 			}
 		});
+	},
+
+	render: function(){
+		var container = new Array();
+		_.each(this.collection.models, function(document){
+			container.push(this.renderDocument(document));
+		}, this);
+		this.$el.html(container);
+	},
+
+	renderDocument: function(document){
+		console.log(document)
+		var documentView = new app.DocumentView({
+			model: document
+		});
+
+		return documentView.render();
 	}
 });

@@ -93,6 +93,13 @@ a h1:hover .black {
   color: black;
   box-shadow: 0px 0px 4px #ddc3ca;
 }
+/*
+.document {
+    background-color: @vichyssoise;
+    color: white;
+}
+
+
 /* Misc Body */
 .aboutList {
   margin-top: 30px;

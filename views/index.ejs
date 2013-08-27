@@ -76,6 +76,7 @@
           <div class='course-status'>
             <h6>0 Documents <i class="icon icon-upload-alt"></i></h6>
           </div>
+          <div class='course-documents'></div>
         </script>
 
         <script id='home-template' type='text/template'>
@@ -91,6 +92,11 @@
               <span class="sr-only">45% Complete</span>
             </div>
           </div>
+        </script>
+
+        <script id='document-template' type='text/template'>
+          <h5><%= name %></h5>
+          <a href='<%= link %>' target='_blank'>Link to document</a> 
         </script>
 
         <!-- JAVASCRIPTS -->
