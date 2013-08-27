@@ -5,6 +5,7 @@
 @vichyssoise: rgb(239,255,205);
 @evening: rgb(46,38,51);
 @shadow: rgb(85,81,82);
+@hex: rgb(220, 233, 190);
 
 
 /* Nav */
@@ -108,6 +109,9 @@ a h1:hover {
     color: @evening;
 }
 
+.course-left {
+    width: 80%;
+}
 .course-status{
     color: @shadow;
     cursor: pointer; 
@@ -117,18 +121,70 @@ a h1:hover {
     cursor: pointer;
 }
 
+.course-upload {
+   margin-top: 11px;
+        color: lighten(@shadow, 10%);
+        cursor: pointer;
+    text-shadow: 1px 1px 2px #eee;
+}
+
+.course-upload:hover {
+    color: mix(@docgoose-red, @evening, 50%);
+}
+
+.upload-icon {
+    margin-left: 7px;
+}
+
 .course:hover {
    border: 1px solid mix(@docgoose-red, #999, 25%); 
    color: black;
    box-shadow: 0px 0px 4px mix(@docgoose-red, #eee, 20%);
 }
 
-/*
-.document {
-    background-color: @vichyssoise;
+/* Documents */
+
+.tabbed{
+    height: 0px;
+    border-bottom: 30px solid darken(@hex, 40%);
+    border-right: 10px solid transparent;
+    line-height: 30px;
+    display: inline-block; 
+    padding-left: 10px;
+    padding-right: 15px;
+    padding-bottom: 3px;
     color: white;
+
 }
 
+ @media screen and (-webkit-animation) {  
+    .course-status {  
+        margin-bottom: -5px;  
+    }   
+}
+
+.document-list {
+    border: 2px solid darken(@hex, 40%);
+    border-radius: 2px;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 5px;
+
+}
+.document {
+    color: @evening;
+    margin: 5px 2px;
+    padding: 2px 5px 2px 15px;
+  
+}
+
+.document a {
+    color: black;
+    text-shadow: 1px 1px 1px #eee;
+}
+
+.document a:hover {
+    color: black;
+}
 
 /* Misc Body */
 

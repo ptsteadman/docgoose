@@ -36,11 +36,6 @@
           </div>
         </div>
       </nav>
-      <nav class="navbar navbar-fixed-bottom visible-xs">
-        <div style='float: right;' id='navbar-link' class='col-xs-2 visible-xs'> 
-            <a href='#/upload'>Upload</a>
-        </div>
-      </nav>
     </div>
   <div class='container'>
     <div id='main-content'></div>
@@ -70,12 +65,23 @@
 
         <!-- TEMPLATES -->
         <script id='course-template' type='text/template'>
-          <div class='course-name'>
-            <h5><strong><%= departmentCode %> <%= courseNumber %>:</strong> <%= title %></h5>
+          <div class='row'>
+            <div class='col-xs-10'>
+              <div class='course-name'>
+                <h5><strong><%= departmentCode %> <%= courseNumber %>:</strong> <%= title %></h5>
+              </div>
+              <div class='course-status'>
+                <h6>0 Documents</h6>
+              </div>
+            </div>
+            <div class='col-xs-2 upload-container'>
+              <div class='course-upload'>
+                <h5 class='upload-icon pull-right'><i class="icon icon-upload-alt"></i></h5>
+                <span class='hidden-xs'><h5 class='pull-right'>Upload</h5></span>
+              </div>
+            </div>
           </div>
-          <div class='course-status'>
-            <h6>0 Documents <i class="icon icon-upload-alt"></i></h6>
-          </div>
+          
           <div class='course-documents'></div>
         </script>
 
@@ -95,8 +101,7 @@
         </script>
 
         <script id='document-template' type='text/template'>
-          <h5><%= name %></h5>
-          <a href='<%= link %>' target='_blank'>Link to document</a> 
+          <a href='<%= link %>' target='_blank'><i class='icon icon-file-alt'></i> <%= _id %></a> 
         </script>
 
         <!-- JAVASCRIPTS -->
